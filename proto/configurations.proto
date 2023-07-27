@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package insterra.proto.configurations;
+
+service Handler {
+  rpc Create (Archive.CreateRequest) returns (Archive) {}
+}
+
+message Archive {
+  message CreateRequest {
+    int32 stack_id = 1 [json_name="stack_id"];
+  }
+
+  message File {
+    string name = 1;
+    string content = 2;
+  }
+
+  int32 id = 1;
+  repeated File files = 2;
+}
+

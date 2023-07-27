@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package insterra.proto.blueprints;
+
+service Handler {
+  rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
+  rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
+}
+
+message Stack {
+  message ListRequest {
+    string provider_name = 1;
+  }
+
+  int32 id = 1;
+  string name = 2;
+  repeated Preset presets = 3;
+}
+
+message Preset {
+  message ListRequest {
+    string category_name = 1;
+  }
+
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+}
