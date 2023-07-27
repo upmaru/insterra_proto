@@ -2,8 +2,8 @@
 
 Compile `*.proto` with 
 
-```elixir
-protoc --elixir_out=plugins=grpc:./lib/insterra/ proto/**/*
+```shell
+protoc --elixir_out=plugins=grpc:./lib/insterra/ priv/proto/**/*
 ```
 
 ## Installation

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "proto/taxonomies.proto";
+import "priv/proto/taxonomies.proto";
 
 package insterra.proto.descriptors;
 
