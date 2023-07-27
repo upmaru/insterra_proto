@@ -3,7 +3,7 @@ defmodule Insterra.Proto.MixProject do
 
   def project do
     [
-      app: :insterra_protocol,
+      app: :insterra_proto,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
