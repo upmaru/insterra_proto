@@ -1,9 +1,27 @@
+defmodule Insterra.Proto.Configurations.Error do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :message, 1, type: :string
+  field :code, 2, type: :string
+end
+
 defmodule Insterra.Proto.Configurations.Archive.CreateRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field :stack_id, 1, type: :int32
+end
+
+defmodule Insterra.Proto.Configurations.Archive.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :code, 1, type: Insterra.Proto.Responses.Code, enum: true
+  field :data, 2, type: Insterra.Proto.Configurations.Archive
 end
 
 defmodule Insterra.Proto.Configurations.Archive.File do
@@ -33,7 +51,7 @@ defmodule Insterra.Proto.Configurations.Handler.Service do
 
   rpc :Create,
       Insterra.Proto.Configurations.Archive.CreateRequest,
-      Insterra.Proto.Configurations.Archive
+      Insterra.Proto.Configurations.Archive.Response
 end
 
 defmodule Insterra.Proto.Configurations.Handler.Stub do

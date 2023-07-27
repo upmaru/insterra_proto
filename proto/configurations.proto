@@ -1,14 +1,26 @@
 syntax = "proto3";
 
+import "proto/responses.proto";
+
 package insterra.proto.configurations;
 
 service Handler {
-  rpc Create (Archive.CreateRequest) returns (Archive) {}
+  rpc Create (Archive.CreateRequest) returns (Archive.Response) {}
+}
+
+message Error {
+  string message = 1;
+  string code = 2;
 }
 
 message Archive {
   message CreateRequest {
     int32 stack_id = 1 [json_name="stack_id"];
+  }
+
+  message Response {
+    responses.Code code = 1;
+    Archive data = 2;
   }
 
   message File {
