@@ -3,7 +3,7 @@ defmodule Insterra.Proto.Blueprints.Stack.ListRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :category_name, 1, type: :string, json_name: "categoryName"
+  field :provider_name, 1, type: :string, json_name: "providerName"
 end
 
 defmodule Insterra.Proto.Blueprints.Stack do
@@ -16,6 +16,14 @@ defmodule Insterra.Proto.Blueprints.Stack do
   field :presets, 3, repeated: true, type: Insterra.Proto.Blueprints.Preset
 end
 
+defmodule Insterra.Proto.Blueprints.Preset.ListRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :category_name, 1, type: :string, json_name: "categoryName"
+end
+
 defmodule Insterra.Proto.Blueprints.Preset do
   @moduledoc false
 
@@ -23,6 +31,7 @@ defmodule Insterra.Proto.Blueprints.Preset do
 
   field :id, 1, type: :int32
   field :name, 2, type: :string
+  field :description, 3, type: :string
 end
 
 defmodule Insterra.Proto.Blueprints.Handler.Service do
@@ -33,6 +42,10 @@ defmodule Insterra.Proto.Blueprints.Handler.Service do
   rpc :ListStacks,
       Insterra.Proto.Blueprints.Stack.ListRequest,
       stream(Insterra.Proto.Blueprints.Stack)
+
+  rpc :ListPresets,
+      Insterra.Proto.Blueprints.Preset.ListRequest,
+      stream(Insterra.Proto.Blueprints.Preset)
 end
 
 defmodule Insterra.Proto.Blueprints.Handler.Stub do

@@ -1,6 +1,10 @@
 # InsterraProtocol
 
-**TODO: Add description**
+Compile `*.proto` with 
+
+```elixir
+protoc --elixir_out=plugins=grpc:./lib/insterra/ proto/**/*
+```
 
 ## Installation
 
