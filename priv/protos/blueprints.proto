@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package insterra.proto.blueprints;
 
+import "descriptors.proto";
+
 service Handler {
   rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
@@ -24,5 +26,5 @@ message Preset {
 
   int32 id = 1;
   string name = 2;
-  string description = 3;
+  descriptors.Block block = 3;
 }

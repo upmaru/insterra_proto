@@ -31,7 +31,7 @@ defmodule Insterra.Proto.Blueprints.Preset do
 
   field :id, 1, type: :int32
   field :name, 2, type: :string
-  field :description, 3, type: :string
+  field :block, 3, type: Insterra.Proto.Descriptors.Block
 end
 
 defmodule Insterra.Proto.Blueprints.Handler.Service do
