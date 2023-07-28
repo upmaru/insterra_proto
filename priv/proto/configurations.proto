@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "priv/proto/responses.proto";
+import "proto/responses.proto";
 
 package insterra.proto.configurations;
 
