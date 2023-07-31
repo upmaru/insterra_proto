@@ -1,11 +1,9 @@
 syntax = "proto3";
 
-import "taxonomies.proto";
-
 package insterra.proto.descriptors;
 
 message Block {
   int32 id = 1;
   string type = 2;
-  taxonomies.Category category = 3;
+  int32 category_id = 3;
 }

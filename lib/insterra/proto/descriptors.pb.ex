@@ -5,5 +5,5 @@ defmodule Insterra.Proto.Descriptors.Block do
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: :string)
-  field(:category, 3, type: Insterra.Proto.Taxonomies.Category)
+  field(:category_id, 3, type: :int32, json_name: "categoryId")
 end
