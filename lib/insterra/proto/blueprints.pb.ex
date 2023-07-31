@@ -21,7 +21,7 @@ defmodule Insterra.Proto.Blueprints.Preset.ListRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :category_name, 1, type: :string
+  field :category_ids, 1, type: :string
 end
 
 defmodule Insterra.Proto.Blueprints.Preset do

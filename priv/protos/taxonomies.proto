@@ -2,7 +2,15 @@ syntax = "proto3";
 
 package insterra.proto.taxonomies;
 
+service Handler {
+  rpc ListCategories(Category.ListRequest) returns (stream Category) {}
+}
+
 message Category {
+  message ListRequest {
+    string query = 1;
+  }
+
   int32 id = 1;
   string name = 2;
 }

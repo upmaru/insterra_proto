@@ -2,7 +2,15 @@ syntax = "proto3";
 
 package insterra.proto.platforms;
 
+service Handler {
+  rpc ListProviders(Provider.ListRequest) returns (stream Provider) {}
+}
+
 message Provider {
+  message ListRequest {
+    string query = 1;
+  }
+
   int32 id = 1;
   string name = 2;
   string source = 3;
