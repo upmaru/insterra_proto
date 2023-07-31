@@ -21,7 +21,7 @@ message Stack {
 
 message Preset {
   message ListRequest {
-    string category_ids = 1 [json_name="category_ids"];
+    repeated int32 category_ids = 1 [json_name="category_ids"];
   }
 
   int32 id = 1;
