@@ -13,5 +13,6 @@ message Category {
 
   int32 id = 1;
   string name = 2;
-  bool configurable = 3;
+  int32 rank = 3;
+  bool configurable = 4;
 }

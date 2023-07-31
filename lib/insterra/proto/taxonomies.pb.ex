@@ -13,7 +13,8 @@ defmodule Insterra.Proto.Taxonomies.Category do
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
-  field(:configurable, 3, type: :bool)
+  field(:rank, 3, type: :int32)
+  field(:configurable, 4, type: :bool)
 end
 
 defmodule Insterra.Proto.Taxonomies.Handler.Service do
