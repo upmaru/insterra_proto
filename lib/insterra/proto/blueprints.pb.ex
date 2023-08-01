@@ -24,15 +24,6 @@ defmodule Insterra.Proto.Blueprints.Preset.ListRequest do
   field(:category_ids, 1, repeated: true, type: :int32)
 end
 
-defmodule Insterra.Proto.Blueprints.Preset.AttributesEntry do
-  @moduledoc false
-
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field(:key, 1, type: :string)
-  field(:value, 2, type: Google.Protobuf.Any)
-end
-
 defmodule Insterra.Proto.Blueprints.Preset do
   @moduledoc false
 
@@ -40,13 +31,7 @@ defmodule Insterra.Proto.Blueprints.Preset do
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
-
-  field(:attributes, 3,
-    repeated: true,
-    type: Insterra.Proto.Blueprints.Preset.AttributesEntry,
-    map: true
-  )
-
+  field(:attributes, 3, type: :bytes)
   field(:block, 4, type: Insterra.Proto.Descriptors.Block)
 end
 
