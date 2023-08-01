@@ -26,5 +26,6 @@ message Preset {
 
   int32 id = 1;
   string name = 2;
-  descriptors.Block block = 3;
+  map<string, string> attributes = 3;
+  descriptors.Block block = 4;
 }
