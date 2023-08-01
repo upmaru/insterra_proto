@@ -15,5 +15,6 @@ message Category {
   string name = 2;
   int32 rank = 3;
   bool configurable = 4;
-  int32 parent_id = 5;
+  string description = 5;
+  int32 parent_id = 6 [json_name="parent_id"];
 }
