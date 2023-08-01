@@ -15,6 +15,7 @@ defmodule Insterra.Proto.Taxonomies.Category do
   field(:name, 2, type: :string)
   field(:rank, 3, type: :int32)
   field(:configurable, 4, type: :bool)
+  field(:parent_id, 5, type: :int32, json_name: "parentId")
 end
 
 defmodule Insterra.Proto.Taxonomies.Handler.Service do
