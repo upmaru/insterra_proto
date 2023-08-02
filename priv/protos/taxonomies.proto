@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package insterra.proto.taxonomies;
+package insterra.protos.taxonomies;
 
 service Handler {
   rpc ListCategories(Category.ListRequest) returns (stream Category) {}

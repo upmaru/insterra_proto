@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package insterra.proto.platforms;
+package insterra.protos.platforms;
 
 service Handler {
   rpc ListProviders(Provider.ListRequest) returns (stream Provider) {}

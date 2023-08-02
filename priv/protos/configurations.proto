@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "responses.proto";
 
-package insterra.proto.configurations;
+package insterra.protos.configurations;
 
 service Handler {
   rpc Create (Archive.CreateRequest) returns (Archive.Response) {}

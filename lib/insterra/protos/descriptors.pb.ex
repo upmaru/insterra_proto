@@ -1,4 +1,4 @@
-defmodule Insterra.Proto.Descriptors.Block do
+defmodule Insterra.Protos.Descriptors.Block do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3

@@ -1,9 +1,9 @@
-defmodule Insterra.Proto.MixProject do
+defmodule InsterraBridge.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :insterra_proto,
+      app: :insterra_bridge,
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
@@ -21,6 +21,8 @@ defmodule Insterra.Proto.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ecto, "~> 3.10"},
+      {:jason, "~> 1.2"},
       {:grpc, "~> 0.6"},
       {:protobuf, "~> 0.12.0"},
       {:google_protos, "~> 0.3"}

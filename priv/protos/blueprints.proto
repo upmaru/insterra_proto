@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package insterra.proto.blueprints;
+package insterra.protos.blueprints;
 
 import "descriptors.proto";
 

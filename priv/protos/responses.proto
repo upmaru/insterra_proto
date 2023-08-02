@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package insterra.proto.responses;
+package insterra.protos.responses;
 
 enum Code {
   OK = 0;
