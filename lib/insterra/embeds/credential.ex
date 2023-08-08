@@ -26,7 +26,7 @@ defmodule Insterra.Embeds.Credential do
   def changeset(credential, attrs) do
     credential
     |> cast(attrs, @valid_attrs)
-    |> validate_required(@valid_attrs)
+    |> validate_required([])
   end
 
   def parse(attrs) do
