@@ -9,6 +9,12 @@ service Handler {
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
 }
 
+message Component {
+  int32 id = 1;
+  bytes attributes = 2;
+  Preset preset = 3;
+}
+
 message Stack {
   message ListRequest {
     string provider_name = 1 [json_name="provider_name"];
@@ -16,7 +22,7 @@ message Stack {
 
   int32 id = 1;
   string name = 2;
-  repeated Preset presets = 3;
+  repeated Component components = 3;
 }
 
 message Preset {

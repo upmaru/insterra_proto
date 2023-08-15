@@ -3,7 +3,7 @@ defmodule Insterra.Protos.Taxonomies.Category.ListRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :configurable, 1, type: :bool
+  field(:configurable, 1, type: :bool)
 end
 
 defmodule Insterra.Protos.Taxonomies.Category do
@@ -11,12 +11,12 @@ defmodule Insterra.Protos.Taxonomies.Category do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :id, 1, type: :int32
-  field :name, 2, type: :string
-  field :rank, 3, type: :int32
-  field :configurable, 4, type: :bool
-  field :description, 5, type: :string
-  field :parent_id, 6, type: :int32
+  field(:id, 1, type: :int32)
+  field(:name, 2, type: :string)
+  field(:rank, 3, type: :int32)
+  field(:configurable, 4, type: :bool)
+  field(:description, 5, type: :string)
+  field(:parent_id, 6, type: :int32)
 end
 
 defmodule Insterra.Protos.Taxonomies.Handler.Service do
@@ -26,9 +26,11 @@ defmodule Insterra.Protos.Taxonomies.Handler.Service do
     name: "insterra.protos.taxonomies.Handler",
     protoc_gen_elixir_version: "0.12.0"
 
-  rpc :ListCategories,
-      Insterra.Protos.Taxonomies.Category.ListRequest,
-      stream(Insterra.Protos.Taxonomies.Category)
+  rpc(
+    :ListCategories,
+    Insterra.Protos.Taxonomies.Category.ListRequest,
+    stream(Insterra.Protos.Taxonomies.Category)
+  )
 end
 
 defmodule Insterra.Protos.Taxonomies.Handler.Stub do
