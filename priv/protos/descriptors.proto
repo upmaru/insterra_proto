@@ -2,8 +2,14 @@ syntax = "proto3";
 
 package insterra.protos.descriptors;
 
+enum Type {
+  provider = 0;
+  module = 1;
+  map = 2;
+}
+
 message Block {
   int32 id = 1;
-  string type = 2;
+  Type type = 2;
   int32 category_id = 3;
 }

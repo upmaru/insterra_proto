@@ -3,9 +3,9 @@ defmodule Insterra.Protos.Responses.Code do
 
   use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :OK, 0
-  field :NOT_FOUND, 1
-  field :INVALID_REQUEST, 2
+  field :ok, 0
+  field :not_found, 1
+  field :invalid_request, 2
 end
 
 defmodule Insterra.Protos.Responses.Status do

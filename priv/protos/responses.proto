@@ -3,9 +3,9 @@ syntax = "proto3";
 package insterra.protos.responses;
 
 enum Code {
-  OK = 0;
-  NOT_FOUND = 1;
-  INVALID_REQUEST = 2;
+  ok = 0;
+  not_found = 1;
+  invalid_request = 2;
 }
 
 message Status {
