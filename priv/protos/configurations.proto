@@ -16,11 +16,18 @@ message Error {
 message Archive {
   message CreateRequest {
     int32 stack_id = 1 [json_name="stack_id"];
+    repeated Customization customizations = 2;
   }
 
   message Response {
     responses.Code code = 1;
-    Archive data = 2;
+    string message = 2;
+    Archive data = 3;
+  }
+
+  message Customization {
+    int32 component_id = 1 [json_name="component_id"];
+    bytes attributes = 2;
   }
 
   message File {

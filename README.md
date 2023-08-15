@@ -3,7 +3,7 @@
 Compile `*.proto` with 
 
 ```shell
-protoc --proto_path=./priv/protos --elixir_out=plugins=grpc:./lib/insterra/proto ./priv/protos/**/*
+protoc --proto_path=./priv/protos --elixir_out=plugins=grpc:./lib/insterra/protos ./priv/protos/**/*
 ```
 
 ## Installation
