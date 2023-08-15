@@ -15,12 +15,12 @@ defmodule Insterra.Embeds.Credential do
 
   @primary_key false
   embedded_schema do
-    field :username, :string
-    field :password, :string
-    field :resource, :string
-    field :host, :string
-    field :port, :integer
-    field :secure, :boolean
+    field(:username, :string)
+    field(:password, :string)
+    field(:resource, :string)
+    field(:host, :string)
+    field(:port, :integer)
+    field(:secure, :boolean)
   end
 
   def changeset(credential, attrs) do

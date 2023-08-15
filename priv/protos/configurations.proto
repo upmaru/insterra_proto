@@ -5,6 +5,7 @@ import "responses.proto";
 package insterra.protos.configurations;
 
 service Handler {
+  rpc Build (Archive.CreateRequest) returns (stream Archive.Customization) {}
   rpc Create (Archive.CreateRequest) returns (Archive.Response) {}
 }
 
@@ -32,4 +33,6 @@ message Archive {
   string id = 1;
   repeated File files = 2;
 }
+
+
 

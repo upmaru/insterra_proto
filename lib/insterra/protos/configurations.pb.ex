@@ -53,6 +53,10 @@ defmodule Insterra.Protos.Configurations.Handler.Service do
     name: "insterra.protos.configurations.Handler",
     protoc_gen_elixir_version: "0.12.0"
 
+  rpc :Build,
+      Insterra.Protos.Configurations.Archive.CreateRequest,
+      stream(Insterra.Protos.Configurations.Archive.Customization)
+
   rpc :Create,
       Insterra.Protos.Configurations.Archive.CreateRequest,
       Insterra.Protos.Configurations.Archive.Response
