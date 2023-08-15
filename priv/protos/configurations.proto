@@ -8,11 +8,6 @@ service Handler {
   rpc Create (Archive.CreateRequest) returns (Archive.Response) {}
 }
 
-message Status {
-  responses.Code code = 1;
-  string message = 2;
-}
-
 message Archive {
   message CreateRequest {
     int32 stack_id = 1 [json_name="stack_id"];
@@ -20,7 +15,7 @@ message Archive {
   }
 
   message Response {
-    Status status = 1;
+    responses.Status status = 1;
     Archive data = 3;
   }
 
@@ -34,7 +29,7 @@ message Archive {
     string content = 2;
   }
 
-  int32 id = 1;
+  string id = 1;
   repeated File files = 2;
 }
 

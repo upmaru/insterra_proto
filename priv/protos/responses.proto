@@ -6,3 +6,8 @@ enum Code {
   OK = 0;
   NOT_FOUND = 1;
 }
+
+message Status {
+  Code code = 1;
+  string message = 2;
+}
