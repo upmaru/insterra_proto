@@ -5,24 +5,29 @@ import "responses.proto";
 package insterra.protos.configurations;
 
 service Handler {
-  rpc Build (Archive.CreateRequest) returns (stream Archive.Customization) {}
-  rpc Create (Archive.CreateRequest) returns (Archive.Response) {}
+  rpc Build (Draft) returns (Draft.Response) {}
+  rpc Create (Draft) returns (Archive.Response) {}
+}
+
+message Customization {
+  int32 component_id = 1 [json_name="component_id"];
+  bytes attributes = 2;
+}
+
+message Draft {
+  message Response {
+    responses.Status status = 1;
+    Draft data = 2;
+  }
+
+  int32 stack_id = 1 [json_name="stack_id"];
+  repeated Customization customizations = 2;
 }
 
 message Archive {
-  message CreateRequest {
-    int32 stack_id = 1 [json_name="stack_id"];
-    repeated Customization customizations = 2;
-  }
-
   message Response {
     responses.Status status = 1;
     Archive data = 3;
-  }
-
-  message Customization {
-    int32 component_id = 1 [json_name="component_id"];
-    bytes attributes = 2;
   }
 
   message File {
@@ -33,6 +38,8 @@ message Archive {
   string id = 1;
   repeated File files = 2;
 }
+
+
 
 
 

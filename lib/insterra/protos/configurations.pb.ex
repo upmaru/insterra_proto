@@ -1,13 +1,28 @@
-defmodule Insterra.Protos.Configurations.Archive.CreateRequest do
+defmodule Insterra.Protos.Configurations.Customization do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :component_id, 1, type: :int32
+  field :attributes, 2, type: :bytes
+end
+
+defmodule Insterra.Protos.Configurations.Draft.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field :status, 1, type: Insterra.Protos.Responses.Status
+  field :data, 2, type: Insterra.Protos.Configurations.Draft
+end
+
+defmodule Insterra.Protos.Configurations.Draft do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field :stack_id, 1, type: :int32
-
-  field :customizations, 2,
-    repeated: true,
-    type: Insterra.Protos.Configurations.Archive.Customization
+  field :customizations, 2, repeated: true, type: Insterra.Protos.Configurations.Customization
 end
 
 defmodule Insterra.Protos.Configurations.Archive.Response do
@@ -17,15 +32,6 @@ defmodule Insterra.Protos.Configurations.Archive.Response do
 
   field :status, 1, type: Insterra.Protos.Responses.Status
   field :data, 3, type: Insterra.Protos.Configurations.Archive
-end
-
-defmodule Insterra.Protos.Configurations.Archive.Customization do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field :component_id, 1, type: :int32
-  field :attributes, 2, type: :bytes
 end
 
 defmodule Insterra.Protos.Configurations.Archive.File do
@@ -53,12 +59,10 @@ defmodule Insterra.Protos.Configurations.Handler.Service do
     name: "insterra.protos.configurations.Handler",
     protoc_gen_elixir_version: "0.12.0"
 
-  rpc :Build,
-      Insterra.Protos.Configurations.Archive.CreateRequest,
-      stream(Insterra.Protos.Configurations.Archive.Customization)
+  rpc :Build, Insterra.Protos.Configurations.Draft, Insterra.Protos.Configurations.Draft.Response
 
   rpc :Create,
-      Insterra.Protos.Configurations.Archive.CreateRequest,
+      Insterra.Protos.Configurations.Draft,
       Insterra.Protos.Configurations.Archive.Response
 end
 
