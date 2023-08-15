@@ -1,10 +1,10 @@
-defmodule Insterra.Protos.Configurations.Error do
+defmodule Insterra.Protos.Configurations.Status do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :message, 1, type: :string
-  field :code, 2, type: :string
+  field :code, 1, type: Insterra.Protos.Responses.Code, enum: true
+  field :message, 2, type: :string
 end
 
 defmodule Insterra.Protos.Configurations.Archive.CreateRequest do
@@ -24,8 +24,7 @@ defmodule Insterra.Protos.Configurations.Archive.Response do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field :code, 1, type: Insterra.Protos.Responses.Code, enum: true
-  field :message, 2, type: :string
+  field :status, 1, type: Insterra.Protos.Configurations.Status
   field :data, 3, type: Insterra.Protos.Configurations.Archive
 end
 
