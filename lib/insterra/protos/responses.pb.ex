@@ -5,6 +5,7 @@ defmodule Insterra.Protos.Responses.Code do
 
   field :OK, 0
   field :NOT_FOUND, 1
+  field :INVALID_REQUEST, 2
 end
 
 defmodule Insterra.Protos.Responses.Status do

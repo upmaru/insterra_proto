@@ -5,6 +5,7 @@ package insterra.protos.responses;
 enum Code {
   OK = 0;
   NOT_FOUND = 1;
+  INVALID_REQUEST = 2;
 }
 
 message Status {
