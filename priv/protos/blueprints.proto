@@ -23,7 +23,8 @@ message Stack {
 
   int32 id = 1;
   string name = 2;
-  repeated Component components = 3;
+  string description = 3;
+  repeated Component components = 4;
 }
 
 message Preset {

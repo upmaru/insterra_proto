@@ -24,7 +24,8 @@ defmodule Insterra.Protos.Blueprints.Stack do
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
-  field(:components, 3, repeated: true, type: Insterra.Protos.Blueprints.Component)
+  field(:description, 3, type: :string)
+  field(:components, 4, repeated: true, type: Insterra.Protos.Blueprints.Component)
 end
 
 defmodule Insterra.Protos.Blueprints.Preset.ListRequest do
