@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package insterra.protos.descriptors;
 
+import "platforms.proto";
+
 enum Type {
   provider = 0;
   module = 1;
@@ -12,4 +14,5 @@ message Block {
   int32 id = 1;
   Type type = 2;
   int32 category_id = 3;
+  platforms.Provider provider = 4;
 }
