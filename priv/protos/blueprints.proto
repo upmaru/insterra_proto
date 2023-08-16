@@ -18,7 +18,8 @@ message Component {
 message Stack {
   message ListRequest {
     string visibility = 1;
-    string organization_name = 2 [json_name="organization_name"];
+    string type = 2;
+    string organization_name = 3 [json_name="organization_name"];
   }
 
   int32 id = 1;

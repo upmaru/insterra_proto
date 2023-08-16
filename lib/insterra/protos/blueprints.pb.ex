@@ -14,7 +14,8 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:visibility, 1, type: :string)
-  field(:organization_name, 2, type: :string)
+  field(:type, 2, type: :string)
+  field(:organization_name, 3, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack do
