@@ -45,7 +45,8 @@ defmodule Insterra.Protos.Blueprints.Preset do
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
   field(:attributes, 3, type: :bytes)
-  field(:block, 4, type: Insterra.Protos.Descriptors.Block)
+  field(:tags, 4, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
+  field(:block, 5, type: Insterra.Protos.Descriptors.Block)
 end
 
 defmodule Insterra.Protos.Blueprints.Handler.Service do

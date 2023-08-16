@@ -18,3 +18,8 @@ message Category {
   string description = 5;
   int32 parent_id = 6 [json_name="parent_id"];
 }
+
+message Tag {
+  string name = 1;
+  string type = 2;
+}

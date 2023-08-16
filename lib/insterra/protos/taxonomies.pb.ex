@@ -19,6 +19,15 @@ defmodule Insterra.Protos.Taxonomies.Category do
   field(:parent_id, 6, type: :int32)
 end
 
+defmodule Insterra.Protos.Taxonomies.Tag do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:name, 1, type: :string)
+  field(:type, 2, type: :string)
+end
+
 defmodule Insterra.Protos.Taxonomies.Handler.Service do
   @moduledoc false
 
