@@ -38,7 +38,7 @@ message Preset {
   int32 id = 1;
   string name = 2;
   platforms.Provider provider = 3;
-  repeated int32 require_one_of = 4;
+  repeated int32 require_one_of_preset_ids = 4;
   bytes attributes = 5;
   repeated taxonomies.Tag tags = 6;
   descriptors.Block block = 7;

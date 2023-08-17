@@ -45,7 +45,13 @@ defmodule Insterra.Protos.Blueprints.Preset do
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
   field(:provider, 3, type: Insterra.Protos.Platforms.Provider)
-  field(:require_one_of, 4, repeated: true, type: :int32, json_name: "requireOneOf")
+
+  field(:require_one_of_preset_ids, 4,
+    repeated: true,
+    type: :int32,
+    json_name: "requireOneOfPresetIds"
+  )
+
   field(:attributes, 5, type: :bytes)
   field(:tags, 6, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
   field(:block, 7, type: Insterra.Protos.Descriptors.Block)
