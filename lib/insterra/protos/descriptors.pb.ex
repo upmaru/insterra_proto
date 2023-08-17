@@ -16,5 +16,4 @@ defmodule Insterra.Protos.Descriptors.Block do
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Descriptors.Type, enum: true)
   field(:category_id, 3, type: :int32, json_name: "categoryId")
-  field(:provider, 4, type: Insterra.Protos.Platforms.Provider)
 end
