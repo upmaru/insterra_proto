@@ -42,10 +42,11 @@ defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:type, 1, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
-  field(:name, 2, type: :string)
-  field(:description, 3, type: :string)
-  field(:components, 4, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+  field(:organization_name, 1, type: :string, json_name: "organizationName")
+  field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
+  field(:name, 3, type: :string)
+  field(:description, 4, type: :string)
+  field(:components, 5, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.Response do
