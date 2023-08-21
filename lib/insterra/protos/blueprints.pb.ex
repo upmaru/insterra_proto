@@ -37,12 +37,25 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   field(:organization_name, 3, type: :string)
 end
 
+defmodule Insterra.Protos.Blueprints.Stack.OrganizationReference do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:provider, 1, type: :string)
+  field(:uid, 2, type: :int32)
+end
+
 defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:organization_name, 1, type: :string, json_name: "organizationName")
+  field(:organization_reference, 1,
+    type: Insterra.Protos.Blueprints.Stack.OrganizationReference,
+    json_name: "organizationReference"
+  )
+
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:name, 3, type: :string)
   field(:description, 4, type: :string)

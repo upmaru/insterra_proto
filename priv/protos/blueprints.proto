@@ -32,8 +32,13 @@ message Stack {
     string organization_name = 3 [json_name="organization_name"];
   }
 
+  message OrganizationReference {
+    string provider = 1;
+    int32 uid = 2;
+  }
+
   message CreateRequest {
-    string organization_name = 1;
+    OrganizationReference organization_reference = 1;
     Type type = 2;
     string name = 3;
     string description = 4;
