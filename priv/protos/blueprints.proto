@@ -23,6 +23,7 @@ message ComponentParams {
   string id = 1;
   int32 preset_id = 2;
   bytes attributes = 3;
+  repeated ComponentParams children = 4;
 }
 
 message Stack {

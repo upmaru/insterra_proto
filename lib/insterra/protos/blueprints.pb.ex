@@ -25,6 +25,7 @@ defmodule Insterra.Protos.Blueprints.ComponentParams do
   field(:id, 1, type: :string)
   field(:preset_id, 2, type: :int32, json_name: "presetId")
   field(:attributes, 3, type: :bytes)
+  field(:children, 4, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
