@@ -5,9 +5,11 @@ package insterra.protos.blueprints;
 import "descriptors.proto";
 import "taxonomies.proto";
 import "platforms.proto";
+import "responses.proto";
 
 service Handler {
   rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
+  rpc CreateStack(Stack.CreateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
 }
 
@@ -17,11 +19,26 @@ message Component {
   Preset preset = 3;
 }
 
+message ComponentParams {
+  int32 preset_id = 1;
+  bytes attributes = 2;
+}
+
 message Stack {
   message ListRequest {
     string visibility = 1;
     string type = 2;
     string organization_name = 3 [json_name="organization_name"];
+  }
+
+  message CreateRequest {
+    string name = 1;
+    repeated ComponentParams components = 2;
+  }
+
+  message Response {
+    responses.Status status = 1;
+    Stack data = 2;
   }
 
   int32 id = 1;

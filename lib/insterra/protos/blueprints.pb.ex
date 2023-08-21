@@ -8,6 +8,15 @@ defmodule Insterra.Protos.Blueprints.Component do
   field(:preset, 3, type: Insterra.Protos.Blueprints.Preset)
 end
 
+defmodule Insterra.Protos.Blueprints.ComponentParams do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:preset_id, 1, type: :int32, json_name: "presetId")
+  field(:attributes, 2, type: :bytes)
+end
+
 defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   @moduledoc false
 
@@ -16,6 +25,24 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   field(:visibility, 1, type: :string)
   field(:type, 2, type: :string)
   field(:organization_name, 3, type: :string)
+end
+
+defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:name, 1, type: :string)
+  field(:components, 2, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+end
+
+defmodule Insterra.Protos.Blueprints.Stack.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:status, 1, type: Insterra.Protos.Responses.Status)
+  field(:data, 2, type: Insterra.Protos.Blueprints.Stack)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack do
@@ -68,6 +95,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
     :ListStacks,
     Insterra.Protos.Blueprints.Stack.ListRequest,
     stream(Insterra.Protos.Blueprints.Stack)
+  )
+
+  rpc(
+    :CreateStack,
+    Insterra.Protos.Blueprints.Stack.CreateRequest,
+    Insterra.Protos.Blueprints.Stack.Response
   )
 
   rpc(
