@@ -17,6 +17,7 @@ message Component {
   int32 id = 1;
   bytes attributes = 2;
   Preset preset = 3;
+  repeated Component children = 4;
 }
 
 message ComponentParams {
