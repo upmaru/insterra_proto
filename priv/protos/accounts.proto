@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package insterra.protos.accounts;
+
+import "responses.proto";
+
+service Handler {
+  rpc RegisterOrganization(Organization.Registration) returns (Organization.Response) {}
+}
+
+message Organization {
+  message Registration {
+    string name = 1;
+    string provider = 2;
+    string uid = 3;
+  }
+
+  message Response {
+    responses.Status status = 1;
+  }
+}
