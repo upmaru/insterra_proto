@@ -43,7 +43,7 @@ defmodule Insterra.Protos.Blueprints.Stack.OrganizationReference do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:provider, 1, type: :string)
-  field(:uid, 2, type: :int32)
+  field(:uid, 2, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do

@@ -34,7 +34,7 @@ message Stack {
 
   message OrganizationReference {
     string provider = 1;
-    int32 uid = 2;
+    string uid = 2;
   }
 
   message CreateRequest {
