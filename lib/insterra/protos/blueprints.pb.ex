@@ -1,3 +1,12 @@
+defmodule Insterra.Protos.Blueprints.Stack.Type do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:template, 0)
+  field(:blueprint, 1)
+end
+
 defmodule Insterra.Protos.Blueprints.Component do
   @moduledoc false
 
@@ -13,8 +22,9 @@ defmodule Insterra.Protos.Blueprints.ComponentParams do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:preset_id, 1, type: :int32, json_name: "presetId")
-  field(:attributes, 2, type: :bytes)
+  field(:id, 1, type: :string)
+  field(:preset_id, 2, type: :int32, json_name: "presetId")
+  field(:attributes, 3, type: :bytes)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
@@ -32,8 +42,10 @@ defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:name, 1, type: :string)
-  field(:components, 2, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+  field(:type, 1, type: :string)
+  field(:name, 2, type: :string)
+  field(:description, 3, type: :string)
+  field(:components, 4, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.Response do
@@ -51,9 +63,10 @@ defmodule Insterra.Protos.Blueprints.Stack do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
-  field(:name, 2, type: :string)
-  field(:description, 3, type: :string)
-  field(:components, 4, repeated: true, type: Insterra.Protos.Blueprints.Component)
+  field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
+  field(:name, 3, type: :string)
+  field(:description, 4, type: :string)
+  field(:components, 5, repeated: true, type: Insterra.Protos.Blueprints.Component)
 end
 
 defmodule Insterra.Protos.Blueprints.Preset.ListRequest do

@@ -20,8 +20,9 @@ message Component {
 }
 
 message ComponentParams {
-  int32 preset_id = 1;
-  bytes attributes = 2;
+  string id = 1;
+  int32 preset_id = 2;
+  bytes attributes = 3;
 }
 
 message Stack {
@@ -32,8 +33,10 @@ message Stack {
   }
 
   message CreateRequest {
-    string name = 1;
-    repeated ComponentParams components = 2;
+    string type = 1;
+    string name = 2;
+    string description = 3;
+    repeated ComponentParams components = 4;
   }
 
   message Response {
@@ -41,10 +44,16 @@ message Stack {
     Stack data = 2;
   }
 
+  enum Type {
+    template = 0;
+    blueprint = 1;
+  }
+
   int32 id = 1;
-  string name = 2;
-  string description = 3;
-  repeated Component components = 4;
+  Type type = 2;
+  string name = 3;
+  string description = 4;
+  repeated Component components = 5;
 }
 
 message Preset {
