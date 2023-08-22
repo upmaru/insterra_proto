@@ -29,9 +29,9 @@ message ComponentParams {
 
 message Stack {
   message ListRequest {
-    string visibility = 1;
-    string type = 2;
-    string organization_name = 3 [json_name="organization_name"];
+    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    string visibility = 2;
+    Type type = 3;
   }
 
   message OrganizationReference {
@@ -40,7 +40,7 @@ message Stack {
   }
 
   message CreateRequest {
-    OrganizationReference organization_reference = 1;
+    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     Type type = 2;
     string name = 3;
     string description = 4;
