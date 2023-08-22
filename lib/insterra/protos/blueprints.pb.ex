@@ -14,8 +14,9 @@ defmodule Insterra.Protos.Blueprints.Component do
 
   field(:id, 1, type: :int32)
   field(:attributes, 2, type: :bytes)
-  field(:preset, 3, type: Insterra.Protos.Blueprints.Preset)
-  field(:children, 4, repeated: true, type: Insterra.Protos.Blueprints.Component)
+  field(:preset_id, 3, type: :int32, json_name: "presetId")
+  field(:preset, 4, type: Insterra.Protos.Blueprints.Preset)
+  field(:parent_id, 5, type: :int32, json_name: "parentId")
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do

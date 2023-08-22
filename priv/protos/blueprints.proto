@@ -17,8 +17,9 @@ service Handler {
 message Component {
   int32 id = 1;
   bytes attributes = 2;
-  Preset preset = 3;
-  repeated Component children = 4;
+  int32 preset_id = 3;
+  Preset preset = 4;
+  int32 parent_id = 5;
 }
 
 message ComponentParams {
