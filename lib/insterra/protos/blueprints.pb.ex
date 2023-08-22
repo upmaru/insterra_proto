@@ -24,10 +24,11 @@ defmodule Insterra.Protos.Blueprints.ComponentParams do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:id, 1, type: :string)
-  field(:preset_id, 2, type: :int32, json_name: "presetId")
-  field(:attributes, 3, type: :bytes)
-  field(:children, 4, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+  field(:id, 1, type: :int32)
+  field(:uid, 2, type: :string)
+  field(:preset_id, 3, type: :int32, json_name: "presetId")
+  field(:attributes, 4, type: :bytes)
+  field(:children, 5, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.GetRequest do
