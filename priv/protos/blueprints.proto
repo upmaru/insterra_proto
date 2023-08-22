@@ -8,6 +8,7 @@ import "platforms.proto";
 import "responses.proto";
 
 service Handler {
+  rpc GetStack(Stack.GetRequest) returns (Stack.Response) {}
   rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
   rpc CreateStack(Stack.CreateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
@@ -28,6 +29,11 @@ message ComponentParams {
 }
 
 message Stack {
+  message GetRequest {
+    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    int32 id = 2;
+  }
+
   message ListRequest {
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     string organization_name = 2 [json_name="organization_name"];
