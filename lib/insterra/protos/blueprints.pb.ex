@@ -35,8 +35,9 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
-  field(:visibility, 2, type: :string)
-  field(:type, 3, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
+  field(:organization_name, 2, type: :string)
+  field(:visibility, 3, type: :string)
+  field(:type, 4, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.OrganizationReference do

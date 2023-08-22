@@ -30,8 +30,9 @@ message ComponentParams {
 message Stack {
   message ListRequest {
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    string visibility = 2;
-    Type type = 3;
+    string organization_name = 2 [json_name="organization_name"];
+    string visibility = 3;
+    Type type = 4;
   }
 
   message OrganizationReference {
