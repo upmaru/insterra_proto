@@ -11,6 +11,7 @@ service Handler {
   rpc GetStack(Stack.GetRequest) returns (Stack.Response) {}
   rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
   rpc CreateStack(Stack.CreateRequest) returns (Stack.Response) {}
+  rpc UpdateStack(Stack.UpdateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
 }
 
@@ -53,6 +54,15 @@ message Stack {
     string name = 3;
     string description = 4;
     repeated ComponentParams components = 5;
+  }
+
+  message UpdateRequest {
+    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    int32 id = 2;
+    Type type = 3;
+    string name = 4;
+    string description = 5;
+    repeated ComponentParams components = 6;
   }
 
   message Response {

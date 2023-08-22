@@ -71,6 +71,19 @@ defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
   field(:components, 5, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
+defmodule Insterra.Protos.Blueprints.Stack.UpdateRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:id, 2, type: :int32)
+  field(:type, 3, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
+  field(:name, 4, type: :string)
+  field(:description, 5, type: :string)
+  field(:components, 6, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+end
+
 defmodule Insterra.Protos.Blueprints.Stack.Response do
   @moduledoc false
 
@@ -142,6 +155,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
   rpc(
     :CreateStack,
     Insterra.Protos.Blueprints.Stack.CreateRequest,
+    Insterra.Protos.Blueprints.Stack.Response
+  )
+
+  rpc(
+    :UpdateStack,
+    Insterra.Protos.Blueprints.Stack.UpdateRequest,
     Insterra.Protos.Blueprints.Stack.Response
   )
 
