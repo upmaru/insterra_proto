@@ -9,10 +9,16 @@ import "responses.proto";
 
 service Handler {
   rpc GetStack(Stack.GetRequest) returns (Stack.Response) {}
+  rpc TransitionStack(Stack.TransitionRequest) returns (Stack.Response) {}
   rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
   rpc CreateStack(Stack.CreateRequest) returns (Stack.Response) {}
   rpc UpdateStack(Stack.UpdateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
+}
+
+message Event {
+  string name = 1;
+  string comment = 2;
 }
 
 message Component {
@@ -32,6 +38,12 @@ message ComponentParams {
 }
 
 message Stack {
+  message TransitionRequest{
+    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    int32 id = 2;
+    Event event = 3;
+  }
+
   message GetRequest {
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     Type type = 2;

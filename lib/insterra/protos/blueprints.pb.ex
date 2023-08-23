@@ -7,6 +7,15 @@ defmodule Insterra.Protos.Blueprints.Stack.Type do
   field(:blueprint, 1)
 end
 
+defmodule Insterra.Protos.Blueprints.Event do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:name, 1, type: :string)
+  field(:comment, 2, type: :string)
+end
+
 defmodule Insterra.Protos.Blueprints.Component do
   @moduledoc false
 
@@ -29,6 +38,16 @@ defmodule Insterra.Protos.Blueprints.ComponentParams do
   field(:preset_id, 3, type: :int32, json_name: "presetId")
   field(:attributes, 4, type: :bytes)
   field(:children, 5, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+end
+
+defmodule Insterra.Protos.Blueprints.Stack.TransitionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:id, 2, type: :int32)
+  field(:event, 3, type: Insterra.Protos.Blueprints.Event)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.GetRequest do
@@ -147,6 +166,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
   rpc(
     :GetStack,
     Insterra.Protos.Blueprints.Stack.GetRequest,
+    Insterra.Protos.Blueprints.Stack.Response
+  )
+
+  rpc(
+    :TransitionStack,
+    Insterra.Protos.Blueprints.Stack.TransitionRequest,
     Insterra.Protos.Blueprints.Stack.Response
   )
 
