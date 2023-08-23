@@ -80,8 +80,10 @@ message Stack {
   int32 id = 1;
   Type type = 2;
   string name = 3;
-  string description = 4;
-  repeated Component components = 5;
+  string current_state = 5;
+  repeated string possible_events = 6;
+  string description = 7;
+  repeated Component components = 8;
 }
 
 message Preset {

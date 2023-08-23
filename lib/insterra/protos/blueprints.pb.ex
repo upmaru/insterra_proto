@@ -103,8 +103,10 @@ defmodule Insterra.Protos.Blueprints.Stack do
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:name, 3, type: :string)
-  field(:description, 4, type: :string)
-  field(:components, 5, repeated: true, type: Insterra.Protos.Blueprints.Component)
+  field(:current_state, 5, type: :string, json_name: "currentState")
+  field(:possible_events, 6, repeated: true, type: :string, json_name: "possibleEvents")
+  field(:description, 7, type: :string)
+  field(:components, 8, repeated: true, type: Insterra.Protos.Blueprints.Component)
 end
 
 defmodule Insterra.Protos.Blueprints.Preset.ListRequest do
