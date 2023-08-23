@@ -34,7 +34,8 @@ message ComponentParams {
 message Stack {
   message GetRequest {
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 id = 2;
+    Type type = 2;
+    int32 id = 3;
   }
 
   message ListRequest {
