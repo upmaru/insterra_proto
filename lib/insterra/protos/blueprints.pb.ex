@@ -46,8 +46,9 @@ defmodule Insterra.Protos.Blueprints.Stack.TransitionRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
-  field(:id, 2, type: :int32)
-  field(:event, 3, type: Insterra.Protos.Blueprints.Event)
+  field(:user_reference, 2, type: Insterra.Protos.Blueprints.Stack.UserReference)
+  field(:id, 3, type: :int32)
+  field(:event, 4, type: Insterra.Protos.Blueprints.Event)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.GetRequest do
@@ -72,6 +73,15 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.OrganizationReference do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:provider, 1, type: :string)
+  field(:uid, 2, type: :string)
+end
+
+defmodule Insterra.Protos.Blueprints.Stack.UserReference do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3

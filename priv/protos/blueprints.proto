@@ -40,8 +40,9 @@ message ComponentParams {
 message Stack {
   message TransitionRequest{
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 id = 2;
-    Event event = 3;
+    UserReference user_reference = 2 [json_name="user_reference"];
+    int32 id = 3;
+    Event event = 4;
   }
 
   message GetRequest {
@@ -58,6 +59,11 @@ message Stack {
   }
 
   message OrganizationReference {
+    string provider = 1;
+    string uid = 2;
+  }
+
+  message UserReference {
     string provider = 1;
     string uid = 2;
   }
