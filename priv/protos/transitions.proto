@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package insterra.protos.transitions;
+
+message Event {
+  string name = 1;
+  string comment = 2;
+}
