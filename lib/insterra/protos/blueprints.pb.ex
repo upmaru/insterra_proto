@@ -90,7 +90,8 @@ defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:name, 3, type: :string)
   field(:description, 4, type: :string)
-  field(:components, 5, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+  field(:parent_id, 5, type: :int32, json_name: "parentId")
+  field(:components, 6, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.UpdateRequest do

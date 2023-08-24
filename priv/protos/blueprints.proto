@@ -69,7 +69,8 @@ message Stack {
     Type type = 2;
     string name = 3;
     string description = 4;
-    repeated ComponentParams components = 5;
+    int32 parent_id = 5;
+    repeated ComponentParams components = 6;
   }
 
   message UpdateRequest {
