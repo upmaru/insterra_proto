@@ -5,16 +5,10 @@ import "responses.proto";
 package insterra.protos.configurations;
 
 service Handler {
-  rpc Build (Draft) returns (Draft.Response) {}
   rpc Create (Draft) returns (Archive.Response) {}
 }
 
 message Draft {
-  message Response {
-    responses.Status status = 1;
-    Draft data = 2;
-  }
-
   int32 stack_id = 1 [json_name="stack_id"];
 }
 

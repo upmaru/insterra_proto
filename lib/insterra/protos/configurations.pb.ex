@@ -1,12 +1,3 @@
-defmodule Insterra.Protos.Configurations.Draft.Response do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field(:status, 1, type: Insterra.Protos.Responses.Status)
-  field(:data, 2, type: Insterra.Protos.Configurations.Draft)
-end
-
 defmodule Insterra.Protos.Configurations.Draft do
   @moduledoc false
 
@@ -48,8 +39,6 @@ defmodule Insterra.Protos.Configurations.Handler.Service do
   use GRPC.Service,
     name: "insterra.protos.configurations.Handler",
     protoc_gen_elixir_version: "0.12.0"
-
-  rpc(:Build, Insterra.Protos.Configurations.Draft, Insterra.Protos.Configurations.Draft.Response)
 
   rpc(
     :Create,
