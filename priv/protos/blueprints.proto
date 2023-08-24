@@ -18,11 +18,17 @@ service Handler {
 }
 
 message Component {
+  enum Type {
+    dependency = 0;
+    inferred = 1;
+  }
+
   int32 id = 1;
-  bytes attributes = 2;
-  int32 preset_id = 3;
-  Preset preset = 4;
-  int32 parent_id = 5;
+  Type type = 2;
+  bytes attributes = 3;
+  int32 preset_id = 4;
+  Preset preset = 5;
+  int32 parent_id = 6;
 }
 
 message ComponentParams {

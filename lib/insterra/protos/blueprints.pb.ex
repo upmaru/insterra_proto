@@ -1,3 +1,12 @@
+defmodule Insterra.Protos.Blueprints.Component.Type do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:dependency, 0)
+  field(:inferred, 1)
+end
+
 defmodule Insterra.Protos.Blueprints.Stack.Type do
   @moduledoc false
 
@@ -13,10 +22,11 @@ defmodule Insterra.Protos.Blueprints.Component do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
-  field(:attributes, 2, type: :bytes)
-  field(:preset_id, 3, type: :int32, json_name: "presetId")
-  field(:preset, 4, type: Insterra.Protos.Blueprints.Preset)
-  field(:parent_id, 5, type: :int32, json_name: "parentId")
+  field(:type, 2, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
+  field(:attributes, 3, type: :bytes)
+  field(:preset_id, 4, type: :int32, json_name: "presetId")
+  field(:preset, 5, type: Insterra.Protos.Blueprints.Preset)
+  field(:parent_id, 6, type: :int32, json_name: "parentId")
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do
