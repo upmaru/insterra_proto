@@ -2,14 +2,43 @@ syntax = "proto3";
 
 package insterra.protos.descriptors;
 
-enum Type {
-  provider = 0;
-  module = 1;
-  map = 2;
+service Handler {
+  rpc ListBlocks(Block.ListRequest) returns (stream Block) {}
 }
 
 message Block {
+  message ListRequest{
+    repeated int32 ids = 1;
+  }
+
+  enum Type {
+    provider = 0;
+    module = 1;
+    map = 2;
+  }
+
   int32 id = 1;
   Type type = 2;
   int32 category_id = 3;
+  repeated Parameter parameters = 4;
+}
+
+message Parameter {
+  enum Type { 
+    value = 0;
+    reference = 1;
+    embed = 2;
+    variable = 3;
+  }
+
+  enum DataType {
+    integer = 0;
+    string = 1;
+    boolean = 2;
+  }
+
+  string key = 1;
+  Type type = 2;
+  DataType data_type = 3;
+  bool singleton = 4;
 }
