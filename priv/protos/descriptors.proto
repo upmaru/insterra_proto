@@ -33,7 +33,13 @@ message Parameter {
     boolean = 5;
   }
 
+  message Correlation {
+    string with_parameter_key = 1;
+    int32 with_parameter_block_id = 2;
+  }
+
   string key = 1;
   Type type = 2;
-  bool singleton = 4;
+  bool singleton = 3;
+  repeated Correlation correlations = 4;
 }

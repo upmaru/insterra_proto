@@ -40,6 +40,15 @@ defmodule Insterra.Protos.Descriptors.Block do
   field(:parameters, 4, repeated: true, type: Insterra.Protos.Descriptors.Parameter)
 end
 
+defmodule Insterra.Protos.Descriptors.Parameter.Correlation do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:with_parameter_key, 1, type: :string, json_name: "withParameterKey")
+  field(:with_parameter_block_id, 2, type: :int32, json_name: "withParameterBlockId")
+end
+
 defmodule Insterra.Protos.Descriptors.Parameter do
   @moduledoc false
 
@@ -47,7 +56,8 @@ defmodule Insterra.Protos.Descriptors.Parameter do
 
   field(:key, 1, type: :string)
   field(:type, 2, type: Insterra.Protos.Descriptors.Parameter.Type, enum: true)
-  field(:singleton, 4, type: :bool)
+  field(:singleton, 3, type: :bool)
+  field(:correlations, 4, repeated: true, type: Insterra.Protos.Descriptors.Parameter.Correlation)
 end
 
 defmodule Insterra.Protos.Descriptors.Handler.Service do
