@@ -25,20 +25,15 @@ message Block {
 
 message Parameter {
   enum Type { 
-    value = 0;
-    reference = 1;
-    embed = 2;
-    variable = 3;
-  }
-
-  enum DataType {
-    integer = 0;
-    string = 1;
-    boolean = 2;
+    reference = 0;
+    embed = 1;
+    variable = 2;
+    integer = 3;
+    string = 4;
+    boolean = 5;
   }
 
   string key = 1;
   Type type = 2;
-  DataType data_type = 3;
   bool singleton = 4;
 }

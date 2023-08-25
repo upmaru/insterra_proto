@@ -13,20 +13,12 @@ defmodule Insterra.Protos.Descriptors.Parameter.Type do
 
   use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:value, 0)
-  field(:reference, 1)
-  field(:embed, 2)
-  field(:variable, 3)
-end
-
-defmodule Insterra.Protos.Descriptors.Parameter.DataType do
-  @moduledoc false
-
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field(:integer, 0)
-  field(:string, 1)
-  field(:boolean, 2)
+  field(:reference, 0)
+  field(:embed, 1)
+  field(:variable, 2)
+  field(:integer, 3)
+  field(:string, 4)
+  field(:boolean, 5)
 end
 
 defmodule Insterra.Protos.Descriptors.Block.ListRequest do
@@ -55,13 +47,6 @@ defmodule Insterra.Protos.Descriptors.Parameter do
 
   field(:key, 1, type: :string)
   field(:type, 2, type: Insterra.Protos.Descriptors.Parameter.Type, enum: true)
-
-  field(:data_type, 3,
-    type: Insterra.Protos.Descriptors.Parameter.DataType,
-    json_name: "dataType",
-    enum: true
-  )
-
   field(:singleton, 4, type: :bool)
 end
 
