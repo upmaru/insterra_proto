@@ -41,6 +41,6 @@ message Parameter {
   string key = 1;
   Type type = 2;
   bool singleton = 3;
-  Parameter from_parameter = 4;
+  repeated Parameter reference_from_parameters = 4;
   repeated Correlation correlations = 5;
 }

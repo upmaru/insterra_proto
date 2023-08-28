@@ -58,9 +58,10 @@ defmodule Insterra.Protos.Descriptors.Parameter do
   field(:type, 2, type: Insterra.Protos.Descriptors.Parameter.Type, enum: true)
   field(:singleton, 3, type: :bool)
 
-  field(:from_parameter, 4,
+  field(:reference_from_parameters, 4,
+    repeated: true,
     type: Insterra.Protos.Descriptors.Parameter,
-    json_name: "fromParameter"
+    json_name: "referenceFromParameters"
   )
 
   field(:correlations, 5, repeated: true, type: Insterra.Protos.Descriptors.Parameter.Correlation)
