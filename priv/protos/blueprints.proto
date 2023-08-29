@@ -23,6 +23,11 @@ message OrganizationReference {
   string uid = 2;
 }
 
+message UserReference {
+  string provider = 1;
+  string uid = 2;
+}
+
 message Component {
   enum Type {
     dependency = 0;
@@ -31,8 +36,9 @@ message Component {
 
   message UpdateRequest{
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 id = 2;
-    bytes attributes = 3;
+    UserReference user_reference = 2 [json_name="user_reference"];
+    int32 id = 3;
+    bytes attributes = 4;
   }
 
   message Response {
@@ -75,11 +81,6 @@ message Stack {
     string organization_name = 2 [json_name="organization_name"];
     string visibility = 3;
     Type type = 4;
-  }
-
-  message UserReference {
-    string provider = 1;
-    string uid = 2;
   }
 
   message CreateRequest {

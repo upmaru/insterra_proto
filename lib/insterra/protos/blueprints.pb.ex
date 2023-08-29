@@ -25,14 +25,24 @@ defmodule Insterra.Protos.Blueprints.OrganizationReference do
   field(:uid, 2, type: :string)
 end
 
+defmodule Insterra.Protos.Blueprints.UserReference do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:provider, 1, type: :string)
+  field(:uid, 2, type: :string)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
-  field(:id, 2, type: :int32)
-  field(:attributes, 3, type: :bytes)
+  field(:user_reference, 2, type: Insterra.Protos.Blueprints.UserReference)
+  field(:id, 3, type: :int32)
+  field(:attributes, 4, type: :bytes)
 end
 
 defmodule Insterra.Protos.Blueprints.Component.Response do
@@ -75,7 +85,7 @@ defmodule Insterra.Protos.Blueprints.Stack.TransitionRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
-  field(:user_reference, 2, type: Insterra.Protos.Blueprints.Stack.UserReference)
+  field(:user_reference, 2, type: Insterra.Protos.Blueprints.UserReference)
   field(:id, 3, type: :int32)
   field(:event, 4, type: Insterra.Protos.Transitions.Event)
 end
@@ -99,15 +109,6 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   field(:organization_name, 2, type: :string)
   field(:visibility, 3, type: :string)
   field(:type, 4, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
-end
-
-defmodule Insterra.Protos.Blueprints.Stack.UserReference do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field(:provider, 1, type: :string)
-  field(:uid, 2, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
