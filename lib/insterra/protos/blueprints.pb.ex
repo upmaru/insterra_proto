@@ -16,6 +16,34 @@ defmodule Insterra.Protos.Blueprints.Stack.Type do
   field(:blueprint, 1)
 end
 
+defmodule Insterra.Protos.Blueprints.OrganizationReference do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:provider, 1, type: :string)
+  field(:uid, 2, type: :string)
+end
+
+defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
+  field(:id, 2, type: :int32)
+  field(:attributes, 3, type: :bytes)
+end
+
+defmodule Insterra.Protos.Blueprints.Component.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:status, 1, type: Insterra.Protos.Responses.Status)
+  field(:data, 2, type: Insterra.Protos.Blueprints.Component)
+end
+
 defmodule Insterra.Protos.Blueprints.Component do
   @moduledoc false
 
@@ -46,7 +74,7 @@ defmodule Insterra.Protos.Blueprints.Stack.TransitionRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Blueprints.Stack.UserReference)
   field(:id, 3, type: :int32)
   field(:event, 4, type: Insterra.Protos.Transitions.Event)
@@ -57,7 +85,7 @@ defmodule Insterra.Protos.Blueprints.Stack.GetRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:id, 3, type: :int32)
 end
@@ -67,19 +95,10 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
   field(:organization_name, 2, type: :string)
   field(:visibility, 3, type: :string)
   field(:type, 4, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
-end
-
-defmodule Insterra.Protos.Blueprints.Stack.OrganizationReference do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field(:provider, 1, type: :string)
-  field(:uid, 2, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.UserReference do
@@ -96,7 +115,7 @@ defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:name, 3, type: :string)
   field(:description, 4, type: :string)
@@ -109,7 +128,7 @@ defmodule Insterra.Protos.Blueprints.Stack.UpdateRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.Stack.OrganizationReference)
+  field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
   field(:id, 2, type: :int32)
   field(:type, 3, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:name, 4, type: :string)
@@ -209,6 +228,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
     :ListPresets,
     Insterra.Protos.Blueprints.Preset.ListRequest,
     stream(Insterra.Protos.Blueprints.Preset)
+  )
+
+  rpc(
+    :UpdateComponent,
+    Insterra.Protos.Blueprints.Component.UpdateRequest,
+    Insterra.Protos.Blueprints.Component.Response
   )
 end
 
