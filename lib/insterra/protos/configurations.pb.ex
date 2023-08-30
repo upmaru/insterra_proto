@@ -7,6 +7,20 @@ defmodule Insterra.Protos.Configurations.Draft do
   field(:original, 2, type: :bool)
 end
 
+defmodule Insterra.Protos.Configurations.HydratedBlock do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:name, 2, type: :string)
+  field(:uid, 3, type: :string)
+  field(:component_id, 4, type: :int32)
+  field(:component_type, 5, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
+  field(:component_parent_id, 6, type: :int32)
+  field(:attributes, 7, type: :bytes)
+end
+
 defmodule Insterra.Protos.Configurations.Archive.Response do
   @moduledoc false
 
@@ -41,7 +55,11 @@ defmodule Insterra.Protos.Configurations.Handler.Service do
     name: "insterra.protos.configurations.Handler",
     protoc_gen_elixir_version: "0.12.0"
 
-  rpc(:Prepare, Insterra.Protos.Configurations.Draft, stream(Insterra.Protos.Descriptors.Block))
+  rpc(
+    :Prepare,
+    Insterra.Protos.Configurations.Draft,
+    stream(Insterra.Protos.Configurations.HydratedBlock)
+  )
 
   rpc(
     :Create,

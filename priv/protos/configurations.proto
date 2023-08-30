@@ -1,18 +1,28 @@
 syntax = "proto3";
 
 import "responses.proto";
-import "descriptors.proto";
+import "blueprints.proto";
 
 package insterra.protos.configurations;
 
 service Handler {
-  rpc Prepare (Draft) returns (stream descriptors.Block) {}
+  rpc Prepare (Draft) returns (stream HydratedBlock) {}
   rpc Create (Draft) returns (Archive.Response) {}
 }
 
 message Draft {
   int32 stack_id = 1 [json_name="stack_id"];
   bool original = 2;
+}
+
+message HydratedBlock {
+  int32 id = 1;
+  string name = 2;
+  string uid = 3;
+  int32 component_id = 4 [json_name="component_id"];
+  blueprints.Component.Type component_type = 5 [json_name="component_type"];
+  int32 component_parent_id = 6 [json_name="component_parent_id"];
+  bytes attributes = 7;
 }
 
 message Archive {
