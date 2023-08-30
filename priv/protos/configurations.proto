@@ -6,7 +6,7 @@ import "descriptors.proto";
 package insterra.protos.configurations;
 
 service Handler {
-  rpc Build (Draft) returns (stream descriptors.Block) {}
+  rpc Prepare (Draft) returns (stream descriptors.Block) {}
   rpc Create (Draft) returns (Archive.Response) {}
 }
 

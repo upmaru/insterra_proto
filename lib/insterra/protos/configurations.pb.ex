@@ -41,7 +41,7 @@ defmodule Insterra.Protos.Configurations.Handler.Service do
     name: "insterra.protos.configurations.Handler",
     protoc_gen_elixir_version: "0.12.0"
 
-  rpc(:Build, Insterra.Protos.Configurations.Draft, stream(Insterra.Protos.Descriptors.Block))
+  rpc(:Prepare, Insterra.Protos.Configurations.Draft, stream(Insterra.Protos.Descriptors.Block))
 
   rpc(
     :Create,
