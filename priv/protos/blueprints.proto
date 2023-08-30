@@ -85,11 +85,12 @@ message Stack {
 
   message CreateRequest {
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    Type type = 2;
-    string name = 3;
-    string description = 4;
-    int32 parent_id = 5;
-    repeated ComponentParams components = 6;
+    UserReference user_reference = 2 [json_name="user_reference"];
+    Type type = 3;
+    string name = 4;
+    string description = 5;
+    int32 parent_id = 6 [json_name="parent_id"];
+    repeated ComponentParams components = 7;
   }
 
   message UpdateRequest {
