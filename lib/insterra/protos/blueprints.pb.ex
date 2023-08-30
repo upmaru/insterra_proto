@@ -131,11 +131,12 @@ defmodule Insterra.Protos.Blueprints.Stack.UpdateRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Blueprints.OrganizationReference)
-  field(:id, 2, type: :int32)
-  field(:type, 3, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
-  field(:name, 4, type: :string)
-  field(:description, 5, type: :string)
-  field(:components, 6, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
+  field(:user_reference, 2, type: Insterra.Protos.Blueprints.UserReference)
+  field(:id, 3, type: :int32)
+  field(:type, 4, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
+  field(:name, 5, type: :string)
+  field(:description, 6, type: :string)
+  field(:components, 7, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.Response do

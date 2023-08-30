@@ -95,11 +95,12 @@ message Stack {
 
   message UpdateRequest {
     OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 id = 2;
-    Type type = 3;
-    string name = 4;
-    string description = 5;
-    repeated ComponentParams components = 6;
+    UserReference user_reference = 2 [json_name="user_reference"];
+    int32 id = 3;
+    Type type = 4;
+    string name = 5;
+    string description = 6;
+    repeated ComponentParams components = 7;
   }
 
   message Response {
