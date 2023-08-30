@@ -4,6 +4,7 @@ defmodule Insterra.Protos.Configurations.Draft do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:stack_id, 1, type: :int32)
+  field(:original, 2, type: :bool)
 end
 
 defmodule Insterra.Protos.Configurations.Archive.Response do
@@ -39,6 +40,8 @@ defmodule Insterra.Protos.Configurations.Handler.Service do
   use GRPC.Service,
     name: "insterra.protos.configurations.Handler",
     protoc_gen_elixir_version: "0.12.0"
+
+  rpc(:Build, Insterra.Protos.Configurations.Draft, stream(Insterra.Protos.Descriptors.Block))
 
   rpc(
     :Create,

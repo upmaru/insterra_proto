@@ -1,15 +1,18 @@
 syntax = "proto3";
 
 import "responses.proto";
+import "descriptors.proto";
 
 package insterra.protos.configurations;
 
 service Handler {
+  rpc Build (Draft) returns (stream descriptors.Block) {}
   rpc Create (Draft) returns (Archive.Response) {}
 }
 
 message Draft {
   int32 stack_id = 1 [json_name="stack_id"];
+  bool original = 2;
 }
 
 message Archive {
