@@ -4,6 +4,8 @@ defmodule Insterra.Embeds.Node do
 
   @derive Jason.Encoder
 
+  @behaviour Insterra.Embeds.Behaviour
+
   @primary_key false
   embedded_schema do
     field(:id, :integer)
@@ -15,6 +17,16 @@ defmodule Insterra.Embeds.Node do
     node
     |> cast(attrs, [:id, :name, :size])
     |> validate_required([:id, :name, :size])
+  end
+
+  def editable_fields do
+    [:name, :size]
+  end
+
+  def new_params(options \\ []) do
+    existing_ids = Keyword.get(options, :ids, [])
+
+    %{id: Enum.max(existing_ids) + 1, name: nil, size: nil}
   end
 
   def parse(attrs) when is_list(attrs) do

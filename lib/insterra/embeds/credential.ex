@@ -13,6 +13,8 @@ defmodule Insterra.Embeds.Credential do
     secure
   )a
 
+  @behaviour Insterra.Embeds.Behaviour
+
   @primary_key false
   embedded_schema do
     field(:username, :string)
@@ -27,6 +29,21 @@ defmodule Insterra.Embeds.Credential do
     credential
     |> cast(attrs, @valid_attrs)
     |> validate_required([])
+  end
+
+  def editable_fields do
+    @valid_attrs
+  end
+
+  def new_params(options \\ []) do
+    %{
+      username: nil,
+      password: nil,
+      resource: nil,
+      host: nil,
+      port: nil,
+      secure: nil
+    }
   end
 
   def parse(attrs) do
