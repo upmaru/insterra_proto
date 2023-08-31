@@ -35,7 +35,7 @@ defmodule Insterra.Embeds.Credential do
     @valid_attrs
   end
 
-  def new_params(options \\ []) do
+  def new_params(_options \\ []) do
     %{
       username: nil,
       password: nil,
