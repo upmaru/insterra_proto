@@ -8,6 +8,16 @@ service Handler {
   rpc RegisterOrganization(Organization.Registration) returns (Organization.Response) {}
 }
 
+message OrganizationReference {
+  string provider = 1;
+  string uid = 2;
+}
+
+message UserReference {
+  string provider = 1;
+  string uid = 2;
+}
+
 message Organization {
   message Registration {
     string name = 1;

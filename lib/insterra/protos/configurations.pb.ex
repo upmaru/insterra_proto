@@ -3,8 +3,10 @@ defmodule Insterra.Protos.Configurations.Draft do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:stack_id, 1, type: :int32)
-  field(:original, 2, type: :bool)
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:stack_id, 3, type: :int32)
+  field(:original, 4, type: :bool)
 end
 
 defmodule Insterra.Protos.Configurations.HydratedBlock do

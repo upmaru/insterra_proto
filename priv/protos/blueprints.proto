@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package insterra.protos.blueprints;
 
+import "accounts.proto";
 import "descriptors.proto";
 import "taxonomies.proto";
 import "platforms.proto";
@@ -18,16 +19,6 @@ service Handler {
   rpc UpdateComponent(Component.UpdateRequest) returns (Component.Response) {}
 }
 
-message OrganizationReference {
-  string provider = 1;
-  string uid = 2;
-}
-
-message UserReference {
-  string provider = 1;
-  string uid = 2;
-}
-
 message Component {
   enum Type {
     dependency = 0;
@@ -35,8 +26,8 @@ message Component {
   }
 
   message UpdateRequest{
-    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    UserReference user_reference = 2 [json_name="user_reference"];
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name="user_reference"];
     int32 id = 3;
     bytes attributes = 4;
   }
@@ -64,28 +55,28 @@ message ComponentParams {
 
 message Stack {
   message TransitionRequest{
-    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    UserReference user_reference = 2 [json_name="user_reference"];
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name="user_reference"];
     int32 id = 3;
     transitions.Event event = 4;
   }
 
   message GetRequest {
-    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     Type type = 2;
     int32 id = 3;
   }
 
   message ListRequest {
-    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     string organization_name = 2 [json_name="organization_name"];
     string visibility = 3;
     Type type = 4;
   }
 
   message CreateRequest {
-    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    UserReference user_reference = 2 [json_name="user_reference"];
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name="user_reference"];
     Type type = 3;
     string name = 4;
     string description = 5;
@@ -94,8 +85,8 @@ message Stack {
   }
 
   message UpdateRequest {
-    OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    UserReference user_reference = 2 [json_name="user_reference"];
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name="user_reference"];
     int32 id = 3;
     Type type = 4;
     string name = 5;
