@@ -35,16 +35,7 @@ defmodule Insterra.Embeds.Credential do
     @valid_attrs
   end
 
-  def new_params(_options \\ []) do
-    %{
-      username: nil,
-      password: nil,
-      resource: nil,
-      host: nil,
-      port: nil,
-      secure: nil
-    }
-  end
+  def sequence, do: nil
 
   def parse(attrs) do
     %__MODULE__{}

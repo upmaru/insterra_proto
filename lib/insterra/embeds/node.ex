@@ -23,11 +23,7 @@ defmodule Insterra.Embeds.Node do
     [:name, :size]
   end
 
-  def new_params(options \\ []) do
-    existing_ids = Keyword.get(options, :ids, [])
-
-    %{id: Enum.max(existing_ids) + 1, name: nil, size: nil}
-  end
+  def sequence, do: :id
 
   def parse(attrs) when is_list(attrs) do
     Enum.map(attrs, &parse/1)
