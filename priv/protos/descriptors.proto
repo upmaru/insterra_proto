@@ -40,7 +40,8 @@ message Parameter {
 
   message Module {
     string name = 1;
-    string provider = 2;
+    string version = 2;
+    string provider = 3;
   }
 
   string key = 1;

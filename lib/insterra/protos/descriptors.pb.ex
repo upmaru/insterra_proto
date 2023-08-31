@@ -36,7 +36,7 @@ defmodule Insterra.Protos.Descriptors.Block do
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Descriptors.Block.Type, enum: true)
-  field(:category_id, 3, type: :int32, json_name: "categoryId")
+  field(:category_id, 3, type: :int32)
   field(:parameters, 4, repeated: true, type: Insterra.Protos.Descriptors.Parameter)
 end
 
@@ -45,17 +45,18 @@ defmodule Insterra.Protos.Descriptors.Parameter.Correlation do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:with_parameter_key, 1, type: :string, json_name: "withParameterKey")
-  field(:with_parameter_block_id, 2, type: :int32, json_name: "withParameterBlockId")
+  field(:with_parameter_key, 1, type: :string)
+  field(:with_parameter_block_id, 2, type: :int32)
 end
 
-defmodule Insterra.Protos.Descriptors.Parameter.EmbedModule do
+defmodule Insterra.Protos.Descriptors.Parameter.Module do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:name, 1, type: :string)
-  field(:provider, 2, type: :string)
+  field(:version, 2, type: :string)
+  field(:provider, 3, type: :string)
 end
 
 defmodule Insterra.Protos.Descriptors.Parameter do
@@ -66,17 +67,9 @@ defmodule Insterra.Protos.Descriptors.Parameter do
   field(:key, 1, type: :string)
   field(:type, 2, type: Insterra.Protos.Descriptors.Parameter.Type, enum: true)
   field(:singleton, 3, type: :bool)
+  field(:module, 4, type: Insterra.Protos.Descriptors.Parameter.Module)
 
-  field(:embed_module, 4,
-    type: Insterra.Protos.Descriptors.Parameter.EmbedModule,
-    json_name: "embedModule"
-  )
-
-  field(:reference_from_parameters, 5,
-    repeated: true,
-    type: Insterra.Protos.Descriptors.Parameter,
-    json_name: "referenceFromParameters"
-  )
+  field(:reference_from_parameters, 5, repeated: true, type: Insterra.Protos.Descriptors.Parameter)
 
   field(:correlations, 6, repeated: true, type: Insterra.Protos.Descriptors.Parameter.Correlation)
 end
