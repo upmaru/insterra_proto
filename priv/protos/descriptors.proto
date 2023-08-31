@@ -19,7 +19,7 @@ message Block {
 
   int32 id = 1;
   Type type = 2;
-  int32 category_id = 3;
+  int32 category_id = 3 [json_name="category_id"];
   repeated Parameter parameters = 4;
 }
 
@@ -34,13 +34,19 @@ message Parameter {
   }
 
   message Correlation {
-    string with_parameter_key = 1;
-    int32 with_parameter_block_id = 2;
+    string with_parameter_key = 1 [json_name="with_parameter_key"];
+    int32 with_parameter_block_id = 2 [json_name="with_parameter_block_id"];
+  }
+
+  message Module {
+    string name = 1;
+    string provider = 2;
   }
 
   string key = 1;
   Type type = 2;
   bool singleton = 3;
-  repeated Parameter reference_from_parameters = 4;
-  repeated Correlation correlations = 5;
+  Module module = 4;
+  repeated Parameter reference_from_parameters = 5 [json_name="reference_from_parameters"];
+  repeated Correlation correlations = 6;
 }
