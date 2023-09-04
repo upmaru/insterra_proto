@@ -15,6 +15,7 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
   field(:stack_id, 3, type: :int32, json_name: "stackId")
+  field(:name, 4, type: :string)
 end
 
 defmodule Insterra.Protos.Github.Repository.Response do
