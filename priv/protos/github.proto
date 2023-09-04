@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package insterra.protos.github;
+
+import "accounts.proto";
+import "responses.proto";
+
+service Handler {
+  rpc GetRepository(Repository.GetRequest) returns (Repository.Response) {}
+  rpc CreateRepository(Repository.CreateRequest) returns (Repository.Response) {}
+}
+
+message Repository {
+  message GetRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    int32 stack_id = 2;
+  }
+
+  message CreateRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name="user_reference"];
+    int32 stack_id = 3;
+  }
+
+  message Response {
+    responses.Status status = 1;
+    Repository data = 3;
+  }
+
+  int32 id = 1;
+  string name = 2;
+}
