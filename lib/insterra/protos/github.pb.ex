@@ -34,6 +34,7 @@ defmodule Insterra.Protos.Github.Repository do
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
+  field(:current_state, 3, type: :string)
 end
 
 defmodule Insterra.Protos.Github.Handler.Service do
