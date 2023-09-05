@@ -29,6 +29,13 @@ message Repository {
     Repository data = 3;
   }
 
+  message Event{
+    int32 id = 1;
+    string name = 2;
+    string inserted_at = 3 [json_name="inserted_at"];
+    Repository resource = 4;
+  }
+
   int32 id = 1;
   string name = 2;
   string current_state = 3 [json_name="current_state"];
