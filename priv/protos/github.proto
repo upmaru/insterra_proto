@@ -8,7 +8,7 @@ import "responses.proto";
 service Handler {
   rpc GetRepository(Repository.GetRequest) returns (Repository.Response) {}
   rpc CreateRepository(Repository.CreateRequest) returns (Repository.Response) {}
-  rpc SubscribeRepository(Repository.SubscribeRequest) returns (stream Repository.Event) {}
+  rpc SubscribeRepository(Repository.Subscription) returns (stream Repository.Event) {}
 }
 
 message Repository {
@@ -25,9 +25,9 @@ message Repository {
     string name = 5;
   }
 
-  message SubscribeRequest {
+  message Subscription {
     accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 stack_id = 2;
+    int32 id = 2;
   }
 
   message Response {
