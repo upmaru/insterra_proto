@@ -19,6 +19,15 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:name, 5, type: :string)
 end
 
+defmodule Insterra.Protos.Github.Repository.SubscribeRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:stack_id, 2, type: :int32, json_name: "stackId")
+end
+
 defmodule Insterra.Protos.Github.Repository.Response do
   @moduledoc false
 
@@ -26,6 +35,16 @@ defmodule Insterra.Protos.Github.Repository.Response do
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 3, type: Insterra.Protos.Github.Repository)
+end
+
+defmodule Insterra.Protos.Github.Repository.Event do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:name, 2, type: :string)
+  field(:github_repository, 3, type: Insterra.Protos.Github.Repository)
 end
 
 defmodule Insterra.Protos.Github.Repository do
@@ -53,6 +72,12 @@ defmodule Insterra.Protos.Github.Handler.Service do
     :CreateRepository,
     Insterra.Protos.Github.Repository.CreateRequest,
     Insterra.Protos.Github.Repository.Response
+  )
+
+  rpc(
+    :SubscribeRepository,
+    Insterra.Protos.Github.Repository.SubscribeRequest,
+    stream(Insterra.Protos.Github.Repository.Event)
   )
 end
 
