@@ -8,7 +8,6 @@ import "responses.proto";
 service Handler {
   rpc GetRepository(Repository.GetRequest) returns (Repository.Response) {}
   rpc CreateRepository(Repository.CreateRequest) returns (Repository.Response) {}
-  rpc SubscribeRepository(Repository.Subscription) returns (stream Repository.Event) {}
 }
 
 message Repository {
@@ -25,20 +24,9 @@ message Repository {
     string name = 5;
   }
 
-  message Subscription {
-    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 id = 2;
-  }
-
   message Response {
     responses.Status status = 1;
     Repository data = 3;
-  }
-
-  message Event {
-    int32 id = 1;
-    string name = 2;
-    Repository github_repository = 3 [json_name="github_repository"];
   }
 
   int32 id = 1;
