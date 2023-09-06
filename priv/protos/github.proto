@@ -17,11 +17,17 @@ message Repository {
   }
 
   message CreateRequest {
+    message Token {
+      int32 nonce_size = 1 [json_name="nonce_size"];
+      string cipher = 2;
+    }
+
     accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     accounts.UserReference user_reference = 2 [json_name="user_reference"];
     int32 instellar_github_installation_id = 3 [json_name="instellar_github_installation_id"];
     int32 stack_id = 4;
     string name = 5;
+    Token encrypted_token = 6;
   }
 
   message Response {

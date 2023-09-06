@@ -7,6 +7,15 @@ defmodule Insterra.Protos.Github.Repository.GetRequest do
   field(:stack_id, 2, type: :int32, json_name: "stackId")
 end
 
+defmodule Insterra.Protos.Github.Repository.CreateRequest.Token do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:nonce_size, 1, type: :int32)
+  field(:cipher, 2, type: :string)
+end
+
 defmodule Insterra.Protos.Github.Repository.CreateRequest do
   @moduledoc false
 
@@ -17,6 +26,11 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:instellar_github_installation_id, 3, type: :int32)
   field(:stack_id, 4, type: :int32, json_name: "stackId")
   field(:name, 5, type: :string)
+
+  field(:encrypted_token, 6,
+    type: Insterra.Protos.Github.Repository.CreateRequest.Token,
+    json_name: "encryptedToken"
+  )
 end
 
 defmodule Insterra.Protos.Github.Repository.Response do
