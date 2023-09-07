@@ -1,3 +1,12 @@
+defmodule Insterra.Protos.Github.Repository.Token do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:nonce_size, 1, type: :int32)
+  field(:cipher, 2, type: :string)
+end
+
 defmodule Insterra.Protos.Github.Repository.GetRequest do
   @moduledoc false
 
@@ -5,15 +14,6 @@ defmodule Insterra.Protos.Github.Repository.GetRequest do
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:stack_id, 2, type: :int32, json_name: "stackId")
-end
-
-defmodule Insterra.Protos.Github.Repository.CreateRequest.Token do
-  @moduledoc false
-
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
-
-  field(:nonce_size, 1, type: :int32)
-  field(:cipher, 2, type: :string)
 end
 
 defmodule Insterra.Protos.Github.Repository.CreateRequest do
@@ -28,7 +28,22 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:name, 5, type: :string)
 
   field(:encrypted_token, 6,
-    type: Insterra.Protos.Github.Repository.CreateRequest.Token,
+    type: Insterra.Protos.Github.Repository.Token,
+    json_name: "encryptedToken"
+  )
+end
+
+defmodule Insterra.Protos.Github.Repository.TransitionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:id, 2, type: :int32)
+  field(:event, 3, type: Insterra.Protos.Transitions.Event)
+
+  field(:encrypted_token, 4,
+    type: Insterra.Protos.Github.Repository.Token,
     json_name: "encryptedToken"
   )
 end
@@ -77,6 +92,12 @@ defmodule Insterra.Protos.Github.Handler.Service do
   rpc(
     :CreateRepository,
     Insterra.Protos.Github.Repository.CreateRequest,
+    Insterra.Protos.Github.Repository.Response
+  )
+
+  rpc(
+    :TransitionRepository,
+    Insterra.Protos.Github.Repository.TransitionRequest,
     Insterra.Protos.Github.Repository.Response
   )
 end
