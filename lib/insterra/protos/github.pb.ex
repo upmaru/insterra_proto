@@ -39,10 +39,11 @@ defmodule Insterra.Protos.Github.Repository.TransitionRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
-  field(:id, 2, type: :int32)
-  field(:event, 3, type: Insterra.Protos.Transitions.Event)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:id, 3, type: :int32)
+  field(:event, 4, type: Insterra.Protos.Transitions.Event)
 
-  field(:encrypted_token, 4,
+  field(:encrypted_token, 5,
     type: Insterra.Protos.Github.Repository.Token,
     json_name: "encryptedToken"
   )

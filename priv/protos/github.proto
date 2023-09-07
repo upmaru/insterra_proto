@@ -34,9 +34,10 @@ message Repository {
 
   message TransitionRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    int32 id = 2;
-    transitions.Event event = 3;
-    Token encrypted_token = 4;
+    accounts.UserReference user_reference = 2 [json_name="user_reference"];
+    int32 id = 3;
+    transitions.Event event = 4;
+    Token encrypted_token = 5;
   }
 
   message Response {
