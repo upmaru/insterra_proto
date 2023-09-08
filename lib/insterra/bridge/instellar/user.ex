@@ -1,4 +1,4 @@
-defmodule Insterra.Instellar.User do
+defmodule Insterra.Bridge.Instellar.User do
   use Ecto.Schema
   import Ecto.Changeset
 
