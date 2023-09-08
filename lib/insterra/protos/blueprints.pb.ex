@@ -16,6 +16,58 @@ defmodule Insterra.Protos.Blueprints.Stack.Type do
   field(:blueprint, 1)
 end
 
+defmodule Insterra.Protos.Blueprints.Draft do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:stack_id, 3, type: :int32)
+  field(:original, 4, type: :bool)
+end
+
+defmodule Insterra.Protos.Blueprints.HydratedBlock do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:name, 2, type: :string)
+  field(:uid, 3, type: :string)
+  field(:component_id, 4, type: :int32)
+  field(:component_type, 5, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
+  field(:component_parent_id, 6, type: :int32)
+  field(:attributes, 7, type: :bytes)
+end
+
+defmodule Insterra.Protos.Blueprints.Archive.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:status, 1, type: Insterra.Protos.Responses.Status)
+  field(:data, 3, type: Insterra.Protos.Blueprints.Archive)
+end
+
+defmodule Insterra.Protos.Blueprints.Archive.File do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:name, 1, type: :string)
+  field(:content, 2, type: :string)
+end
+
+defmodule Insterra.Protos.Blueprints.Archive do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :string)
+  field(:files, 2, repeated: true, type: Insterra.Protos.Blueprints.Archive.File)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
   @moduledoc false
 
@@ -178,6 +230,18 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
   use GRPC.Service,
     name: "insterra.protos.blueprints.Handler",
     protoc_gen_elixir_version: "0.12.0"
+
+  rpc(
+    :PrepareConfiguration,
+    Insterra.Protos.Blueprints.Draft,
+    stream(Insterra.Protos.Blueprints.HydratedBlock)
+  )
+
+  rpc(
+    :CreateConfiguration,
+    Insterra.Protos.Blueprints.Draft,
+    Insterra.Protos.Blueprints.Archive.Response
+  )
 
   rpc(
     :GetStack,

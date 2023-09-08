@@ -10,6 +10,8 @@ import "responses.proto";
 import "transitions.proto";
 
 service Handler {
+  rpc PrepareConfiguration(Draft) returns (stream HydratedBlock) {}
+  rpc CreateConfiguration(Draft) returns (Archive.Response) {}
   rpc GetStack(Stack.GetRequest) returns (Stack.Response) {}
   rpc TransitionStack(Stack.TransitionRequest) returns (Stack.Response) {}
   rpc ListStacks(Stack.ListRequest) returns (stream Stack) {}
@@ -17,6 +19,38 @@ service Handler {
   rpc UpdateStack(Stack.UpdateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
   rpc UpdateComponent(Component.UpdateRequest) returns (Component.Response) {}
+}
+
+message Draft {
+  accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+  accounts.UserReference user_reference = 2 [json_name="user_reference"];
+  int32 stack_id = 3 [json_name="stack_id"];
+  bool original = 4;
+}
+
+message HydratedBlock {
+  int32 id = 1;
+  string name = 2;
+  string uid = 3;
+  int32 component_id = 4 [json_name="component_id"];
+  Component.Type component_type = 5 [json_name="component_type"];
+  int32 component_parent_id = 6 [json_name="component_parent_id"];
+  bytes attributes = 7;
+}
+
+message Archive {
+  message Response {
+    responses.Status status = 1;
+    Archive data = 3;
+  }
+
+  message File {
+    string name = 1;
+    string content = 2;
+  }
+
+  string id = 1;
+  repeated File files = 2;
 }
 
 message Component {
