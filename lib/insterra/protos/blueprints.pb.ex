@@ -79,6 +79,27 @@ defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
   field(:attributes, 4, type: :bytes)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.RegistrationRequest.Resource do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:type, 2, type: :string)
+end
+
+defmodule Insterra.Protos.Blueprints.Component.RegistrationRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:id, 3, type: :int32)
+  field(:event, 4, type: Insterra.Protos.Transitions.Event)
+  field(:resource, 5, type: Insterra.Protos.Blueprints.Component.RegistrationRequest.Resource)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.Response do
   @moduledoc false
 
@@ -99,6 +120,8 @@ defmodule Insterra.Protos.Blueprints.Component do
   field(:preset_id, 4, type: :int32, json_name: "presetId")
   field(:preset, 5, type: Insterra.Protos.Blueprints.Preset)
   field(:parent_id, 6, type: :int32, json_name: "parentId")
+  field(:current_state, 7, type: :string, json_name: "currentState")
+  field(:registration, 8, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do
@@ -282,6 +305,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
   rpc(
     :UpdateComponent,
     Insterra.Protos.Blueprints.Component.UpdateRequest,
+    Insterra.Protos.Blueprints.Component.Response
+  )
+
+  rpc(
+    :RegisterComponent,
+    Insterra.Protos.Blueprints.Component.RegistrationRequest,
     Insterra.Protos.Blueprints.Component.Response
   )
 end
