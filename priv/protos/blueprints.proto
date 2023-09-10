@@ -71,6 +71,7 @@ message Component {
     message CreateRequest {
       accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
       accounts.UserReference user_reference = 2 [json_name="user_reference"];
+      int32 component_id = 3 [json_name="component_id"];
       string provider = 4;
       string type = 5;
       string uid = 6;

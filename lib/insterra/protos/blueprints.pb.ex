@@ -86,6 +86,7 @@ defmodule Insterra.Protos.Blueprints.Component.Reference.CreateRequest do
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:component_id, 3, type: :int32)
   field(:provider, 4, type: :string)
   field(:type, 5, type: :string)
   field(:uid, 6, type: :string)
