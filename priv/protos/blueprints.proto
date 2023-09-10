@@ -19,7 +19,7 @@ service Handler {
   rpc UpdateStack(Stack.UpdateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
   rpc UpdateComponent(Component.UpdateRequest) returns (Component.Response) {}
-  rpc RegisterComponent(Component.RegistrationRequest) returns (Component.Response) {}
+  rpc CreateComponentReference(Component.Reference.CreateRequest) returns (Component.Reference.Response) {}
 }
 
 message Draft {
@@ -67,17 +67,24 @@ message Component {
     bytes attributes = 4;
   }
 
-  message RegistrationRequest{
-    message Resource {
-      int32 id = 1;
-      string type = 2;
+  message Reference {
+    message CreateRequest {
+      accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+      accounts.UserReference user_reference = 2 [json_name="user_reference"];
+      string provider = 4;
+      string type = 5;
+      string uid = 6;
     }
 
-    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
-    accounts.UserReference user_reference = 2 [json_name="user_reference"];
-    int32 id = 3;
-    transitions.Event event = 4;
-    Resource resource = 5;
+    message Response {
+      responses.Status status = 1;
+      Reference data = 2;
+    }
+
+    int32 id = 1;
+    string provider = 2;
+    string type = 3;
+    string uid = 4;
   }
 
   message Response {
