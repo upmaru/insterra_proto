@@ -86,6 +86,7 @@ message Component {
     string provider = 2;
     string type = 3;
     string uid = 4;
+    int32 component_id = 5;
   }
 
   message Response {

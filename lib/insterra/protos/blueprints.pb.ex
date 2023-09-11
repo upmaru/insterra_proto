@@ -110,6 +110,7 @@ defmodule Insterra.Protos.Blueprints.Component.Reference do
   field(:provider, 2, type: :string)
   field(:type, 3, type: :string)
   field(:uid, 4, type: :string)
+  field(:component_id, 5, type: :int32, json_name: "componentId")
 end
 
 defmodule Insterra.Protos.Blueprints.Component.Response do
