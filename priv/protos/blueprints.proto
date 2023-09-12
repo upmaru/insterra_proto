@@ -100,16 +100,24 @@ message Component {
     Component data = 2;
   }
 
+  message Event {
+    int32 id = 1;
+    string name = 2;
+    string inserted_at = 3 [json_name="inserted_at"];
+    Component resource = 4;
+  }
+
   int32 id = 1;
-  Type type = 2;
-  bytes attributes = 3;
-  int32 preset_id = 4;
-  Preset preset = 5;
-  int32 parent_id = 6;
-  string current_state = 7;
-  string registration = 8;
-  Reference reference = 9;
-  string updated_at = 10;
+  int32 stack_id = 2;
+  Type type = 3;
+  bytes attributes = 4;
+  int32 preset_id = 5;
+  Preset preset = 6;
+  int32 parent_id = 7;
+  string current_state = 8;
+  string registration = 9;
+  Reference reference = 10;
+  string updated_at = 11;
 }
 
 message ComponentParams {

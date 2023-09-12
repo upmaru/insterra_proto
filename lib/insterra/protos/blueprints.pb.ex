@@ -131,21 +131,33 @@ defmodule Insterra.Protos.Blueprints.Component.Response do
   field(:data, 2, type: Insterra.Protos.Blueprints.Component)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.Event do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:name, 2, type: :string)
+  field(:inserted_at, 3, type: :string)
+  field(:resource, 4, type: Insterra.Protos.Blueprints.Component)
+end
+
 defmodule Insterra.Protos.Blueprints.Component do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
-  field(:type, 2, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
-  field(:attributes, 3, type: :bytes)
-  field(:preset_id, 4, type: :int32, json_name: "presetId")
-  field(:preset, 5, type: Insterra.Protos.Blueprints.Preset)
-  field(:parent_id, 6, type: :int32, json_name: "parentId")
-  field(:current_state, 7, type: :string, json_name: "currentState")
-  field(:registration, 8, type: :string)
-  field(:reference, 9, type: Insterra.Protos.Blueprints.Component.Reference)
-  field(:updated_at, 10, type: :string, json_name: "updatedAt")
+  field(:stack_id, 2, type: :int32, json_name: "stackId")
+  field(:type, 3, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
+  field(:attributes, 4, type: :bytes)
+  field(:preset_id, 5, type: :int32, json_name: "presetId")
+  field(:preset, 6, type: Insterra.Protos.Blueprints.Preset)
+  field(:parent_id, 7, type: :int32, json_name: "parentId")
+  field(:current_state, 8, type: :string, json_name: "currentState")
+  field(:registration, 9, type: :string)
+  field(:reference, 10, type: Insterra.Protos.Blueprints.Component.Reference)
+  field(:updated_at, 11, type: :string, json_name: "updatedAt")
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do
