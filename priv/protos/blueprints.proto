@@ -18,6 +18,7 @@ service Handler {
   rpc CreateStack(Stack.CreateRequest) returns (Stack.Response) {}
   rpc UpdateStack(Stack.UpdateRequest) returns (Stack.Response) {}
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
+  rpc ListComponents(Component.ListRequest) returns (stream Component) {}
   rpc UpdateComponent(Component.UpdateRequest) returns (Component.Response) {}
   rpc CreateComponentReference(Component.Reference.CreateRequest) returns (Component.Reference.Response) {}
 }
@@ -58,6 +59,11 @@ message Component {
   enum Type {
     dependency = 0;
     inferred = 1;
+  }
+
+  message ListRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+    int32 stack_id = 2 [json_name="stack_id"];
   }
 
   message UpdateRequest{
@@ -102,6 +108,7 @@ message Component {
   int32 parent_id = 6;
   string current_state = 7;
   string registration = 8;
+  Reference reference = 9;
 }
 
 message ComponentParams {

@@ -68,6 +68,15 @@ defmodule Insterra.Protos.Blueprints.Archive do
   field(:files, 2, repeated: true, type: Insterra.Protos.Blueprints.Archive.File)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.ListRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:stack_id, 2, type: :int32)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
   @moduledoc false
 
@@ -135,6 +144,7 @@ defmodule Insterra.Protos.Blueprints.Component do
   field(:parent_id, 6, type: :int32, json_name: "parentId")
   field(:current_state, 7, type: :string, json_name: "currentState")
   field(:registration, 8, type: :string)
+  field(:reference, 9, type: Insterra.Protos.Blueprints.Component.Reference)
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do
@@ -313,6 +323,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
     :ListPresets,
     Insterra.Protos.Blueprints.Preset.ListRequest,
     stream(Insterra.Protos.Blueprints.Preset)
+  )
+
+  rpc(
+    :ListComponents,
+    Insterra.Protos.Blueprints.Component.ListRequest,
+    stream(Insterra.Protos.Blueprints.Component)
   )
 
   rpc(
