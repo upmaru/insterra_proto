@@ -8,7 +8,7 @@ service Handler {
 
 message Category {
   message ListRequest {
-    bool configurable = 1;
+    repeated bool configurable = 1;
   }
 
   int32 id = 1;

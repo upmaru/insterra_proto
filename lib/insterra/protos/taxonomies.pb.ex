@@ -3,7 +3,7 @@ defmodule Insterra.Protos.Taxonomies.Category.ListRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:configurable, 1, type: :bool)
+  field(:configurable, 1, repeated: true, type: :bool)
 end
 
 defmodule Insterra.Protos.Taxonomies.Category do
