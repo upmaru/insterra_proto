@@ -145,7 +145,7 @@ defmodule Insterra.Protos.Blueprints.Component do
   field(:current_state, 7, type: :string, json_name: "currentState")
   field(:registration, 8, type: :string)
   field(:reference, 9, type: Insterra.Protos.Blueprints.Component.Reference)
-  field(:updated_at, 10, type: Google.Protobuf.Timestamp, json_name: "updatedAt")
+  field(:updated_at, 10, type: :string, json_name: "updatedAt")
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do

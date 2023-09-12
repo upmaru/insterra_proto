@@ -9,8 +9,6 @@ import "platforms.proto";
 import "responses.proto";
 import "transitions.proto";
 
-import "google/protobuf/timestamp.proto";
-
 service Handler {
   rpc PrepareConfiguration(Draft) returns (stream HydratedBlock) {}
   rpc CreateConfiguration(Draft) returns (Archive.Response) {}
@@ -111,7 +109,7 @@ message Component {
   string current_state = 7;
   string registration = 8;
   Reference reference = 9;
-  google.protobuf.Timestamp updated_at = 10;
+  string updated_at = 10;
 }
 
 message ComponentParams {
