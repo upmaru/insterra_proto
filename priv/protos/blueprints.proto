@@ -92,7 +92,7 @@ message Component {
     string provider = 2;
     string type = 3;
     string uid = 4;
-    int32 component_id = 5;
+    int32 component_id = 5 [json_name="component_id"];
   }
 
   message Response {
@@ -108,22 +108,22 @@ message Component {
   }
 
   int32 id = 1;
-  int32 stack_id = 2;
+  int32 stack_id = 2 [json_name="stack_id"];
   Type type = 3;
   bytes attributes = 4;
-  int32 preset_id = 5;
+  int32 preset_id = 5 [json_name="preset_id"];
   Preset preset = 6;
-  int32 parent_id = 7;
-  string current_state = 8;
+  int32 parent_id = 7 [json_name="parent_id"];
+  string current_state = 8 [json_name="current_state"];
   string registration = 9;
   Reference reference = 10;
-  string updated_at = 11;
+  string updated_at = 11 [json_name="updated_at"];
 }
 
 message ComponentParams {
   int32 id = 1;
   string uid = 2;
-  int32 preset_id = 3;
+  int32 preset_id = 3 [json_name="preset_id"];
   bytes attributes = 4;
   repeated ComponentParams children = 5;
 }
@@ -183,7 +183,7 @@ message Stack {
   Type type = 2;
   string name = 3;
   string current_state = 5;
-  repeated string possible_events = 6;
+  repeated string possible_events = 6 [json_name="possible_events"];
   string description = 7;
   repeated Component components = 8;
 }
@@ -196,7 +196,7 @@ message Preset {
   int32 id = 1;
   string name = 2;
   platforms.Provider provider = 3;
-  repeated int32 require_one_of_preset_ids = 4;
+  repeated int32 require_one_of_preset_ids = 4 [json_name="require_one_of_preset_ids"];
   bytes attributes = 5;
   repeated taxonomies.Tag tags = 6;
   descriptors.Block block = 7;

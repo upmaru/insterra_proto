@@ -119,7 +119,7 @@ defmodule Insterra.Protos.Blueprints.Component.Reference do
   field(:provider, 2, type: :string)
   field(:type, 3, type: :string)
   field(:uid, 4, type: :string)
-  field(:component_id, 5, type: :int32, json_name: "componentId")
+  field(:component_id, 5, type: :int32)
 end
 
 defmodule Insterra.Protos.Blueprints.Component.Response do
@@ -148,16 +148,16 @@ defmodule Insterra.Protos.Blueprints.Component do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
-  field(:stack_id, 2, type: :int32, json_name: "stackId")
+  field(:stack_id, 2, type: :int32)
   field(:type, 3, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
   field(:attributes, 4, type: :bytes)
-  field(:preset_id, 5, type: :int32, json_name: "presetId")
+  field(:preset_id, 5, type: :int32)
   field(:preset, 6, type: Insterra.Protos.Blueprints.Preset)
-  field(:parent_id, 7, type: :int32, json_name: "parentId")
-  field(:current_state, 8, type: :string, json_name: "currentState")
+  field(:parent_id, 7, type: :int32)
+  field(:current_state, 8, type: :string)
   field(:registration, 9, type: :string)
   field(:reference, 10, type: Insterra.Protos.Blueprints.Component.Reference)
-  field(:updated_at, 11, type: :string, json_name: "updatedAt")
+  field(:updated_at, 11, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do
@@ -167,7 +167,7 @@ defmodule Insterra.Protos.Blueprints.ComponentParams do
 
   field(:id, 1, type: :int32)
   field(:uid, 2, type: :string)
-  field(:preset_id, 3, type: :int32, json_name: "presetId")
+  field(:preset_id, 3, type: :int32)
   field(:attributes, 4, type: :bytes)
   field(:children, 5, repeated: true, type: Insterra.Protos.Blueprints.ComponentParams)
 end
@@ -250,7 +250,7 @@ defmodule Insterra.Protos.Blueprints.Stack do
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
   field(:name, 3, type: :string)
   field(:current_state, 5, type: :string, json_name: "currentState")
-  field(:possible_events, 6, repeated: true, type: :string, json_name: "possibleEvents")
+  field(:possible_events, 6, repeated: true, type: :string)
   field(:description, 7, type: :string)
   field(:components, 8, repeated: true, type: Insterra.Protos.Blueprints.Component)
 end
@@ -271,13 +271,7 @@ defmodule Insterra.Protos.Blueprints.Preset do
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
   field(:provider, 3, type: Insterra.Protos.Platforms.Provider)
-
-  field(:require_one_of_preset_ids, 4,
-    repeated: true,
-    type: :int32,
-    json_name: "requireOneOfPresetIds"
-  )
-
+  field(:require_one_of_preset_ids, 4, repeated: true, type: :int32)
   field(:attributes, 5, type: :bytes)
   field(:tags, 6, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
   field(:block, 7, type: Insterra.Protos.Descriptors.Block)

@@ -13,7 +13,7 @@ defmodule Insterra.Protos.Github.Repository.GetRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
-  field(:stack_id, 2, type: :int32, json_name: "stackId")
+  field(:stack_id, 2, type: :int32)
 end
 
 defmodule Insterra.Protos.Github.Repository.CreateRequest do
@@ -24,7 +24,7 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
   field(:instellar_github_installation_id, 3, type: :int32)
-  field(:stack_id, 4, type: :int32, json_name: "stackId")
+  field(:stack_id, 4, type: :int32)
   field(:name, 5, type: :string)
 
   field(:encrypted_token, 6,
@@ -42,11 +42,7 @@ defmodule Insterra.Protos.Github.Repository.TransitionRequest do
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
   field(:id, 3, type: :int32)
   field(:event, 4, type: Insterra.Protos.Transitions.Event)
-
-  field(:encrypted_token, 5,
-    type: Insterra.Protos.Github.Repository.Token,
-    json_name: "encryptedToken"
-  )
+  field(:encrypted_token, 5, type: Insterra.Protos.Github.Repository.Token)
 end
 
 defmodule Insterra.Protos.Github.Repository.Response do
