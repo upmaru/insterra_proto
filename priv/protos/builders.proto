@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package insterra.protos.builders;
+
+import "accounts.proto";
+import "taxonomies.proto";
+
+service Handler {
+  rpc ListPacks(Pack.ListRequest) returns (stream Pack) {}
+}
+
+message Pack {
+  enum Type {
+    template = 0;
+    builder = 1;
+  }
+
+  message ListRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
+    string organization_name = 2 [json_name = "organization_name"];
+    string visibility = 3;
+    Type type = 4;
+  }
+
+  int32 id = 1;
+  Type type = 2;
+  string name = 3;
+  string visibility = 4;
+  string description = 5;
+  repeated taxonomies.Tag tags = 6;
+}
