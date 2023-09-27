@@ -7,6 +7,16 @@ defmodule Insterra.Protos.Builders.Pack.Type do
   field(:builder, 1)
 end
 
+defmodule Insterra.Protos.Builders.Dependency do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:pack_id, 2, type: :int32)
+  field(:package_id, 3, type: :int32)
+end
+
 defmodule Insterra.Protos.Builders.Pack.ListRequest do
   @moduledoc false
 
@@ -29,6 +39,56 @@ defmodule Insterra.Protos.Builders.Pack do
   field(:visibility, 4, type: :string)
   field(:description, 5, type: :string)
   field(:tags, 6, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
+  field(:main_dependency, 7, type: Insterra.Protos.Builders.Dependency)
+end
+
+defmodule Insterra.Protos.Builders.Image do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:system, 2, type: :string)
+  field(:version, 3, type: :string)
+end
+
+defmodule Insterra.Protos.Builders.Package.Repository do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:channel, 2, type: :string)
+  field(:architecture, 3, type: :string)
+  field(:image, 4, type: Insterra.Protos.Builders.Image)
+end
+
+defmodule Insterra.Protos.Builders.Package.Version.ListRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:package_id, 1, type: :int32)
+end
+
+defmodule Insterra.Protos.Builders.Package.Version do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:identifier, 2, type: :string)
+  field(:package, 3, type: Insterra.Protos.Builders.Package)
+  field(:repository, 4, type: Insterra.Protos.Builders.Package.Repository)
+end
+
+defmodule Insterra.Protos.Builders.Package do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:name, 2, type: :string)
 end
 
 defmodule Insterra.Protos.Builders.Handler.Service do
@@ -40,6 +100,12 @@ defmodule Insterra.Protos.Builders.Handler.Service do
     :ListPacks,
     Insterra.Protos.Builders.Pack.ListRequest,
     stream(Insterra.Protos.Builders.Pack)
+  )
+
+  rpc(
+    :ListPackageVersions,
+    Insterra.Protos.Builders.Package.Version.ListRequest,
+    stream(Insterra.Protos.Builders.Package.Version)
   )
 end
 

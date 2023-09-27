@@ -7,6 +7,13 @@ import "taxonomies.proto";
 
 service Handler {
   rpc ListPacks(Pack.ListRequest) returns (stream Pack) {}
+  rpc ListPackageVersions(Package.Version.ListRequest) returns (stream Package.Version) {}
+}
+
+message Dependency {
+  int32 id = 1;
+  int32 pack_id = 2 [json_name = "pack_id"];
+  int32 package_id = 3 [json_name = "package_id"];
 }
 
 message Pack {
@@ -28,4 +35,34 @@ message Pack {
   string visibility = 4;
   string description = 5;
   repeated taxonomies.Tag tags = 6;
+  Dependency main_dependency = 7 [json_name = "main_dependency"];
+}
+
+message Image {
+  int32 id = 1;
+  string system = 2;
+  string version = 3;
+}
+
+message Package {
+  message Repository {
+    int32 id = 1;
+    string channel = 2;
+    string architecture = 3;
+    Image image = 4;
+  }
+
+  message Version {
+    message ListRequest {
+      int32 package_id = 1 [json_name = "package_id"];
+    }
+
+    int32 id = 1;
+    string identifier = 2;
+    Package package = 3;
+    Repository repository = 4;
+  }
+
+  int32 id = 1;
+  string name = 2;
 }
