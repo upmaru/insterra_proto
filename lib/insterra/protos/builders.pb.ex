@@ -38,7 +38,8 @@ defmodule Insterra.Protos.Builders.Pack.CreateRequest do
   field(:parent_id, 3, type: :int32)
   field(:image_id, 4, type: :int32)
   field(:name, 5, type: :string)
-  field(:type, 6, type: Insterra.Protos.Builders.Pack.Type, enum: true)
+  field(:description, 6, type: :string)
+  field(:type, 7, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
 defmodule Insterra.Protos.Builders.Pack.Response do

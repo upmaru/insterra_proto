@@ -37,7 +37,8 @@ message Pack {
     int32 parent_id = 3 [json_name = "parent_id"];
     int32 image_id = 4 [json_name = "image_id"];
     string name = 5;
-    Type type = 6;
+    string description = 6;
+    Type type = 7;
   }
 
   message Response {
