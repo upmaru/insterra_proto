@@ -17,6 +17,15 @@ defmodule Insterra.Protos.Builders.Dependency do
   field(:package_id, 3, type: :int32)
 end
 
+defmodule Insterra.Protos.Builders.Pack.GetRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:instellar_package_id, 2, type: :int32)
+end
+
 defmodule Insterra.Protos.Builders.Pack.ListRequest do
   @moduledoc false
 
@@ -38,7 +47,6 @@ defmodule Insterra.Protos.Builders.Pack.CreateRequest do
   field(:parent_id, 3, type: :int32)
   field(:image_id, 4, type: :int32)
   field(:name, 5, type: :string)
-  field(:description, 6, type: :string)
   field(:type, 7, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
@@ -124,6 +132,8 @@ defmodule Insterra.Protos.Builders.Handler.Service do
     Insterra.Protos.Builders.Pack.ListRequest,
     stream(Insterra.Protos.Builders.Pack)
   )
+
+  rpc(:GetPack, Insterra.Protos.Builders.Pack.GetRequest, Insterra.Protos.Builders.Pack.Response)
 
   rpc(
     :CreateChildPack,
