@@ -28,6 +28,28 @@ defmodule Insterra.Protos.Builders.Pack.ListRequest do
   field(:type, 4, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
+defmodule Insterra.Protos.Builders.Pack.CreateRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:instellar_package_id, 2, type: :int32)
+  field(:parent_id, 3, type: :int32)
+  field(:image_id, 4, type: :int32)
+  field(:name, 5, type: :string)
+  field(:type, 6, type: Insterra.Protos.Builders.Pack.Type, enum: true)
+end
+
+defmodule Insterra.Protos.Builders.Pack.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:status, 1, type: Insterra.Protos.Responses.Status)
+  field(:pack, 2, type: Insterra.Protos.Builders.Pack)
+end
+
 defmodule Insterra.Protos.Builders.Pack do
   @moduledoc false
 
@@ -100,6 +122,12 @@ defmodule Insterra.Protos.Builders.Handler.Service do
     :ListPacks,
     Insterra.Protos.Builders.Pack.ListRequest,
     stream(Insterra.Protos.Builders.Pack)
+  )
+
+  rpc(
+    :CreatePack,
+    Insterra.Protos.Builders.Pack.CreateRequest,
+    Insterra.Protos.Builders.Pack.Response
   )
 
   rpc(
