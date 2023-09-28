@@ -8,7 +8,7 @@ import "responses.proto";
 
 service Handler {
   rpc ListPacks(Pack.ListRequest) returns (stream Pack) {}
-  rpc CreatePack(Pack.CreateRequest) returns (Pack.Response) {}
+  rpc CreateChildPack(Pack.CreateRequest) returns (Pack.Response) {}
   rpc ListPackageVersions(Package.Version.ListRequest) returns (stream Package.Version) {}
 }
 
@@ -42,7 +42,7 @@ message Pack {
 
   message Response {
     responses.Status status = 1;
-    Pack pack = 2;
+    Pack data = 2;
   }
 
   int32 id = 1;

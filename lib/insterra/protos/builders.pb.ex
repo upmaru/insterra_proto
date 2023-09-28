@@ -47,7 +47,7 @@ defmodule Insterra.Protos.Builders.Pack.Response do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
-  field(:pack, 2, type: Insterra.Protos.Builders.Pack)
+  field(:data, 2, type: Insterra.Protos.Builders.Pack)
 end
 
 defmodule Insterra.Protos.Builders.Pack do
@@ -125,7 +125,7 @@ defmodule Insterra.Protos.Builders.Handler.Service do
   )
 
   rpc(
-    :CreatePack,
+    :CreateChildPack,
     Insterra.Protos.Builders.Pack.CreateRequest,
     Insterra.Protos.Builders.Pack.Response
   )
