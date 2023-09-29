@@ -1,3 +1,16 @@
+defmodule Insterra.Protos.Builders.Preview.Block.Type do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:dependencies, 0)
+  field(:stack, 1)
+  field(:build, 2)
+  field(:run, 3)
+  field(:hook, 4)
+  field(:kits, 5)
+end
+
 defmodule Insterra.Protos.Builders.Pack.Type do
   @moduledoc false
 
@@ -15,6 +28,43 @@ defmodule Insterra.Protos.Builders.Dependency do
   field(:id, 1, type: :int32)
   field(:pack_id, 2, type: :int32)
   field(:package_id, 3, type: :int32)
+end
+
+defmodule Insterra.Protos.Builders.Preview.CreateRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:pack_id, 2, type: :int32)
+end
+
+defmodule Insterra.Protos.Builders.Preview.Block do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:section, 1, type: Insterra.Protos.Builders.Preview.Block.Type, enum: true)
+  field(:description, 2, type: :string)
+  field(:content, 3, type: :string)
+end
+
+defmodule Insterra.Protos.Builders.Preview.Response do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:status, 1, type: Insterra.Protos.Responses.Status)
+  field(:data, 2, type: Insterra.Protos.Builders.Preview)
+end
+
+defmodule Insterra.Protos.Builders.Preview do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:pack_id, 1, type: :int32)
+  field(:blocks, 2, repeated: true, type: Insterra.Protos.Builders.Preview.Block)
 end
 
 defmodule Insterra.Protos.Builders.Pack.GetRequest do
@@ -135,6 +185,12 @@ defmodule Insterra.Protos.Builders.Handler.Service do
   )
 
   rpc(:GetPack, Insterra.Protos.Builders.Pack.GetRequest, Insterra.Protos.Builders.Pack.Response)
+
+  rpc(
+    :CreatePackPreview,
+    Insterra.Protos.Builders.Preview.CreateRequest,
+    Insterra.Protos.Builders.Preview.Response
+  )
 
   rpc(
     :CreateChildPack,
