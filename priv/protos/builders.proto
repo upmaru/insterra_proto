@@ -28,6 +28,7 @@ message Pack {
   message GetRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
     int32 instellar_package_id = 2 [json_name = "instellar_package_id"];
+    Type type = 3;
   }
 
   message ListRequest {

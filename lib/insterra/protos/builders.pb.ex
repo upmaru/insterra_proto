@@ -24,6 +24,7 @@ defmodule Insterra.Protos.Builders.Pack.GetRequest do
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:instellar_package_id, 2, type: :int32)
+  field(:type, 3, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
 defmodule Insterra.Protos.Builders.Pack.ListRequest do
