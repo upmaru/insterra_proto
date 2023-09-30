@@ -1,7 +1,7 @@
 defmodule Insterra.Protos.Blueprints.Component.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:dependency, 0)
   field(:inferred, 1)
@@ -10,7 +10,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:template, 0)
   field(:blueprint, 1)
@@ -19,7 +19,7 @@ end
 defmodule Insterra.Protos.Blueprints.Draft do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
@@ -30,7 +30,7 @@ end
 defmodule Insterra.Protos.Blueprints.HydratedBlock do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
@@ -44,7 +44,7 @@ end
 defmodule Insterra.Protos.Blueprints.Archive.Response do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 3, type: Insterra.Protos.Blueprints.Archive)
@@ -53,7 +53,7 @@ end
 defmodule Insterra.Protos.Blueprints.Archive.File do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:name, 1, type: :string)
   field(:content, 2, type: :string)
@@ -62,7 +62,7 @@ end
 defmodule Insterra.Protos.Blueprints.Archive do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :string)
   field(:files, 2, repeated: true, type: Insterra.Protos.Blueprints.Archive.File)
@@ -71,7 +71,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.ListRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:stack_id, 2, type: :int32)
@@ -80,7 +80,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
@@ -91,7 +91,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.Reference.CreateRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
@@ -104,7 +104,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.Reference.Response do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 2, type: Insterra.Protos.Blueprints.Component.Reference)
@@ -113,7 +113,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.Reference do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:provider, 2, type: :string)
@@ -125,7 +125,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.Response do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 2, type: Insterra.Protos.Blueprints.Component)
@@ -134,7 +134,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component.Event do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
@@ -145,7 +145,7 @@ end
 defmodule Insterra.Protos.Blueprints.Component do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:stack_id, 2, type: :int32)
@@ -163,7 +163,7 @@ end
 defmodule Insterra.Protos.Blueprints.ComponentParams do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:uid, 2, type: :string)
@@ -175,7 +175,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.TransitionRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
@@ -186,7 +186,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.GetRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
@@ -196,7 +196,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:organization_name, 2, type: :string)
@@ -207,7 +207,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
@@ -221,7 +221,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.UpdateRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
@@ -235,7 +235,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack.Response do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 2, type: Insterra.Protos.Blueprints.Stack)
@@ -244,7 +244,7 @@ end
 defmodule Insterra.Protos.Blueprints.Stack do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
@@ -258,7 +258,7 @@ end
 defmodule Insterra.Protos.Blueprints.Preset.ListRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:category_ids, 1, repeated: true, type: :int32)
 end
@@ -266,7 +266,7 @@ end
 defmodule Insterra.Protos.Blueprints.Preset do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)

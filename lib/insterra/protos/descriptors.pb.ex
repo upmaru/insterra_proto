@@ -1,7 +1,7 @@
 defmodule Insterra.Protos.Descriptors.Block.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:provider, 0)
   field(:module, 1)
@@ -11,7 +11,7 @@ end
 defmodule Insterra.Protos.Descriptors.Parameter.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:reference, 0)
   field(:embed, 1)
@@ -24,7 +24,7 @@ end
 defmodule Insterra.Protos.Descriptors.Block.ListRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:ids, 1, repeated: true, type: :int32)
 end
@@ -32,7 +32,7 @@ end
 defmodule Insterra.Protos.Descriptors.Block do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Descriptors.Block.Type, enum: true)
@@ -43,7 +43,7 @@ end
 defmodule Insterra.Protos.Descriptors.Parameter.Correlation do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:with_parameter_key, 1, type: :string)
   field(:with_parameter_block_id, 2, type: :int32)
@@ -52,7 +52,7 @@ end
 defmodule Insterra.Protos.Descriptors.Parameter.Module do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:name, 1, type: :string)
   field(:version, 2, type: :string)
@@ -62,7 +62,7 @@ end
 defmodule Insterra.Protos.Descriptors.Parameter do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:key, 1, type: :string)
   field(:type, 2, type: Insterra.Protos.Descriptors.Parameter.Type, enum: true)

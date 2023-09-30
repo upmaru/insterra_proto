@@ -28,6 +28,12 @@ message Preview {
     string deployment_endpoint = 3 [json_name = "deployment_endpoint"];
   }
 
+  message File {
+    string path = 1;
+    string description = 2;
+    string content = 3;
+  }
+
   message Block {
     enum Type {
       dependencies = 0;
@@ -50,6 +56,7 @@ message Preview {
 
   int32 pack_id = 1 [json_name = "pack_id"];
   repeated Block blocks = 2;
+  repeated File files = 3;
 }
 
 message Pack {

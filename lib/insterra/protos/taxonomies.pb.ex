@@ -1,7 +1,7 @@
 defmodule Insterra.Protos.Taxonomies.Category.ListRequest do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:configurable, 1, repeated: true, type: :bool)
 end
@@ -9,7 +9,7 @@ end
 defmodule Insterra.Protos.Taxonomies.Category do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
@@ -22,7 +22,7 @@ end
 defmodule Insterra.Protos.Taxonomies.Tag do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:name, 1, type: :string)
   field(:type, 2, type: :string)

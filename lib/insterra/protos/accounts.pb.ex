@@ -1,7 +1,7 @@
 defmodule Insterra.Protos.Accounts.OrganizationReference do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:provider, 1, type: :string)
   field(:uid, 2, type: :string)
@@ -10,7 +10,7 @@ end
 defmodule Insterra.Protos.Accounts.UserReference do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:provider, 1, type: :string)
   field(:uid, 2, type: :string)
@@ -19,7 +19,7 @@ end
 defmodule Insterra.Protos.Accounts.Organization.Registration do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:name, 1, type: :string)
   field(:provider, 2, type: :string)
@@ -29,7 +29,7 @@ end
 defmodule Insterra.Protos.Accounts.Organization.Response do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
 end
@@ -37,7 +37,7 @@ end
 defmodule Insterra.Protos.Accounts.Organization do
   @moduledoc false
 
-  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 end
 
 defmodule Insterra.Protos.Accounts.Handler.Service do
