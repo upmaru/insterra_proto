@@ -25,6 +25,7 @@ message Preview {
   message CreateRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
     int32 pack_id = 2 [json_name = "pack_id"];
+    string deployment_endpoint = 3 [json_name = "deployment_endpoint"];
   }
 
   message Block {

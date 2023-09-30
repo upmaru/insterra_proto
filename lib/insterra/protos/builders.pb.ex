@@ -1,7 +1,7 @@
 defmodule Insterra.Protos.Builders.Preview.Block.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:dependencies, 0)
   field(:stack, 1)
@@ -14,7 +14,7 @@ end
 defmodule Insterra.Protos.Builders.Pack.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:template, 0)
   field(:builder, 1)
@@ -23,7 +23,7 @@ end
 defmodule Insterra.Protos.Builders.Dependency do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:id, 1, type: :int32)
   field(:pack_id, 2, type: :int32)
@@ -33,16 +33,17 @@ end
 defmodule Insterra.Protos.Builders.Preview.CreateRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:pack_id, 2, type: :int32)
+  field(:deployment_endpoint, 3, type: :string)
 end
 
 defmodule Insterra.Protos.Builders.Preview.Block do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:section, 1, type: Insterra.Protos.Builders.Preview.Block.Type, enum: true)
   field(:description, 2, type: :string)
@@ -52,7 +53,7 @@ end
 defmodule Insterra.Protos.Builders.Preview.Response do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 2, type: Insterra.Protos.Builders.Preview)
@@ -61,7 +62,7 @@ end
 defmodule Insterra.Protos.Builders.Preview do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:pack_id, 1, type: :int32)
   field(:blocks, 2, repeated: true, type: Insterra.Protos.Builders.Preview.Block)
@@ -70,7 +71,7 @@ end
 defmodule Insterra.Protos.Builders.Pack.GetRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:instellar_package_id, 2, type: :int32)
@@ -80,7 +81,7 @@ end
 defmodule Insterra.Protos.Builders.Pack.ListRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:organization_name, 2, type: :string)
@@ -91,7 +92,7 @@ end
 defmodule Insterra.Protos.Builders.Pack.CreateRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:instellar_package_id, 2, type: :int32)
@@ -104,7 +105,7 @@ end
 defmodule Insterra.Protos.Builders.Pack.Response do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
   field(:data, 2, type: Insterra.Protos.Builders.Pack)
@@ -113,7 +114,7 @@ end
 defmodule Insterra.Protos.Builders.Pack do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Builders.Pack.Type, enum: true)
@@ -127,7 +128,7 @@ end
 defmodule Insterra.Protos.Builders.Image do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:id, 1, type: :int32)
   field(:system, 2, type: :string)
@@ -137,7 +138,7 @@ end
 defmodule Insterra.Protos.Builders.Package.Repository do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:id, 1, type: :int32)
   field(:channel, 2, type: :string)
@@ -148,7 +149,7 @@ end
 defmodule Insterra.Protos.Builders.Package.Version.ListRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:package_id, 1, type: :int32)
 end
@@ -156,7 +157,7 @@ end
 defmodule Insterra.Protos.Builders.Package.Version do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:id, 1, type: :int32)
   field(:identifier, 2, type: :string)
@@ -167,7 +168,7 @@ end
 defmodule Insterra.Protos.Builders.Package do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.12.0"
 
   field(:id, 1, type: :int32)
   field(:name, 2, type: :string)
