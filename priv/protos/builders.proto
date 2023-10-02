@@ -107,10 +107,11 @@ message Pack {
   int32 id = 1;
   Type type = 2;
   string name = 3;
-  string visibility = 4;
-  string description = 5;
-  repeated taxonomies.Tag tags = 6;
-  Dependency main_dependency = 7 [json_name = "main_dependency"];
+  string current_state = 4 [json_name = "current_state"];
+  string visibility = 5;
+  string description = 6;
+  repeated taxonomies.Tag tags = 7;
+  Dependency main_dependency = 8 [json_name = "main_dependency"];
 }
 
 message Image {

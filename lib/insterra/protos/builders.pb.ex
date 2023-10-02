@@ -143,10 +143,11 @@ defmodule Insterra.Protos.Builders.Pack do
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Builders.Pack.Type, enum: true)
   field(:name, 3, type: :string)
-  field(:visibility, 4, type: :string)
-  field(:description, 5, type: :string)
-  field(:tags, 6, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
-  field(:main_dependency, 7, type: Insterra.Protos.Builders.Dependency)
+  field(:current_state, 4, type: :string)
+  field(:visibility, 5, type: :string)
+  field(:description, 6, type: :string)
+  field(:tags, 7, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
+  field(:main_dependency, 8, type: Insterra.Protos.Builders.Dependency)
 end
 
 defmodule Insterra.Protos.Builders.Image do
