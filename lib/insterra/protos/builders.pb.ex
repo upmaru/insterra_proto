@@ -88,6 +88,8 @@ defmodule Insterra.Protos.Builders.Pack.TransitionRequest do
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
   field(:id, 3, type: :int32)
   field(:event, 4, type: Insterra.Protos.Transitions.Event)
+  field(:encrypted_token, 5, type: Insterra.Protos.Credentials.Token)
+  field(:deployment_endpoint, 6, type: :string)
 end
 
 defmodule Insterra.Protos.Builders.Pack.GetRequest do

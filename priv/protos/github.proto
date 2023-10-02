@@ -5,6 +5,7 @@ package insterra.protos.github;
 import "accounts.proto";
 import "responses.proto";
 import "transitions.proto";
+import "credentials.proto";
 
 service Handler {
   rpc GetRepository(Repository.GetRequest) returns (Repository.Response) {}
@@ -13,11 +14,6 @@ service Handler {
 }
 
 message Repository {
-  message Token {
-    int32 nonce_size = 1 [json_name="nonce_size"];
-    string cipher = 2;
-  }
-
   message GetRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     int32 stack_id = 2 [json_name="stack_id"];
@@ -29,7 +25,7 @@ message Repository {
     int32 instellar_github_installation_id = 3 [json_name="instellar_github_installation_id"];
     int32 stack_id = 4 [json_name="stack_id"];
     string name = 5;
-    Token encrypted_token = 6;
+    credentials.Token encrypted_token = 6;
   }
 
   message TransitionRequest {
@@ -37,7 +33,7 @@ message Repository {
     accounts.UserReference user_reference = 2 [json_name="user_reference"];
     int32 id = 3;
     transitions.Event event = 4;
-    Token encrypted_token = 5 [json_name="encrypted_token"];
+    credentials.Token encrypted_token = 5 [json_name="encrypted_token"];
   }
 
   message Response {

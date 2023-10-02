@@ -6,6 +6,7 @@ import "accounts.proto";
 import "taxonomies.proto";
 import "responses.proto";
 import "transitions.proto";
+import "credentials.proto";
 
 service Handler {
   rpc ListPacks(Pack.ListRequest) returns (stream Pack) {}
@@ -72,6 +73,8 @@ message Pack {
     accounts.UserReference user_reference = 2 [json_name = "user_reference"];
     int32 id = 3;
     transitions.Event event = 4;
+    credentials.Token encrypted_token = 5 [json_name = "encrypted_token"];
+    string deployment_endpoint = 6 [json_name = "deployment_endpoint"];
   }
 
   message GetRequest {
