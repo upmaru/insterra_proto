@@ -5,10 +5,12 @@ package insterra.protos.builders;
 import "accounts.proto";
 import "taxonomies.proto";
 import "responses.proto";
+import "transitions.proto";
 
 service Handler {
   rpc ListPacks(Pack.ListRequest) returns (stream Pack) {}
   rpc GetPack(Pack.GetRequest) returns (Pack.Response) {}
+  rpc TransitionPack(Pack.TransitionRequest) returns (Pack.Response) {}
   rpc CreatePackPreview(Preview.CreateRequest) returns (Preview.Response) {}
   rpc CreateChildPack(Pack.CreateRequest) returns (Pack.Response) {}
   rpc ListPackageVersions(Package.Version.ListRequest) returns (stream Package.Version) {}
@@ -63,6 +65,13 @@ message Pack {
   enum Type {
     template = 0;
     builder = 1;
+  }
+
+  message TransitionRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name = "user_reference"];
+    int32 id = 3;
+    transitions.Event event = 4;
   }
 
   message GetRequest {

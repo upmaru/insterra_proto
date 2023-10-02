@@ -79,6 +79,17 @@ defmodule Insterra.Protos.Builders.Preview do
   field(:files, 3, repeated: true, type: Insterra.Protos.Builders.Preview.File)
 end
 
+defmodule Insterra.Protos.Builders.Pack.TransitionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:id, 3, type: :int32)
+  field(:event, 4, type: Insterra.Protos.Transitions.Event)
+end
+
 defmodule Insterra.Protos.Builders.Pack.GetRequest do
   @moduledoc false
 
@@ -197,6 +208,12 @@ defmodule Insterra.Protos.Builders.Handler.Service do
   )
 
   rpc(:GetPack, Insterra.Protos.Builders.Pack.GetRequest, Insterra.Protos.Builders.Pack.Response)
+
+  rpc(
+    :TransitionPack,
+    Insterra.Protos.Builders.Pack.TransitionRequest,
+    Insterra.Protos.Builders.Pack.Response
+  )
 
   rpc(
     :CreatePackPreview,
