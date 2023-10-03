@@ -104,6 +104,13 @@ message Pack {
     Pack data = 2;
   }
 
+  message Event {
+    int32 id = 1;
+    string name = 2;
+    string inserted_at = 3 [json_name = "inserted_at"];
+    Pack resource = 4;
+  }
+
   int32 id = 1;
   Type type = 2;
   string name = 3;
