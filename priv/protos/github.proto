@@ -55,5 +55,6 @@ message Repository {
 
   int32 id = 1;
   string name = 2;
-  string current_state = 3 [json_name="current_state"];
+  int32 uid = 3;
+  string current_state = 4 [json_name="current_state"];
 }
