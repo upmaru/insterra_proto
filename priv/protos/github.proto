@@ -8,12 +8,17 @@ import "transitions.proto";
 import "credentials.proto";
 
 service Handler {
+  rpc ListRepositories(Repository.ListRequest) returns (stream Repository) {}
   rpc GetRepository(Repository.GetRequest) returns (Repository.Response) {}
   rpc CreateRepository(Repository.CreateRequest) returns (Repository.Response) {}
   rpc TransitionRepository(Repository.TransitionRequest) returns (Repository.Response) {}
 }
 
 message Repository {
+  message ListRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
+  }
+
   message GetRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     int32 stack_id = 2 [json_name="stack_id"];

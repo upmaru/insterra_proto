@@ -1,3 +1,11 @@
+defmodule Insterra.Protos.Github.Repository.ListRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+end
+
 defmodule Insterra.Protos.Github.Repository.GetRequest do
   @moduledoc false
 
@@ -66,6 +74,12 @@ defmodule Insterra.Protos.Github.Handler.Service do
   @moduledoc false
 
   use GRPC.Service, name: "insterra.protos.github.Handler", protoc_gen_elixir_version: "0.12.0"
+
+  rpc(
+    :ListRepositories,
+    Insterra.Protos.Github.Repository.ListRequest,
+    stream(Insterra.Protos.Github.Repository)
+  )
 
   rpc(
     :GetRepository,
