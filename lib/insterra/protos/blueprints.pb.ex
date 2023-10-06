@@ -132,7 +132,8 @@ defmodule Insterra.Protos.Blueprints.Component.Reference do
   field(:provider, 2, type: :string)
   field(:type, 3, type: :string)
   field(:uid, 4, type: :string)
-  field(:component_id, 5, type: :int32)
+  field(:current_state, 5, type: :string, json_name: "currentState")
+  field(:component_id, 6, type: :int32)
 end
 
 defmodule Insterra.Protos.Blueprints.Component.Response do

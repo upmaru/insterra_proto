@@ -102,7 +102,8 @@ message Component {
     string provider = 2;
     string type = 3;
     string uid = 4;
-    int32 component_id = 5 [json_name = "component_id"];
+    string current_state = 5;
+    int32 component_id = 6 [json_name = "component_id"];
   }
 
   message Response {
