@@ -88,6 +88,19 @@ defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
   field(:attributes, 4, type: :bytes)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.Reference.TransitionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:provider, 3, type: :string)
+  field(:type, 4, type: :string)
+  field(:uid, 5, type: :string)
+  field(:event, 6, type: Insterra.Protos.Transitions.Event)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.Reference.CreateRequest do
   @moduledoc false
 
@@ -347,6 +360,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
   rpc(
     :CreateComponentReference,
     Insterra.Protos.Blueprints.Component.Reference.CreateRequest,
+    Insterra.Protos.Blueprints.Component.Reference.Response
+  )
+
+  rpc(
+    :TransitionComponentReference,
+    Insterra.Protos.Blueprints.Component.Reference.TransitionRequest,
     Insterra.Protos.Blueprints.Component.Reference.Response
   )
 end
