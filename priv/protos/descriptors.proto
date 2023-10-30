@@ -31,7 +31,6 @@ message Variable {
 
   string key = 1;
   string description = 2;
-  string generator = 3;
 }
 
 message Parameter {

@@ -55,7 +55,6 @@ defmodule Insterra.Protos.Descriptors.Variable do
 
   field(:key, 1, type: :string)
   field(:description, 2, type: :string)
-  field(:generator, 3, type: :string)
 end
 
 defmodule Insterra.Protos.Descriptors.Parameter.Correlation do
