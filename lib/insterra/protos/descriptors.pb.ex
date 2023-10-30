@@ -40,6 +40,24 @@ defmodule Insterra.Protos.Descriptors.Block do
   field(:parameters, 4, repeated: true, type: Insterra.Protos.Descriptors.Parameter)
 end
 
+defmodule Insterra.Protos.Descriptors.Variable.ListRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:stack_id, 1, type: :int32, json_name: "stackId")
+end
+
+defmodule Insterra.Protos.Descriptors.Variable do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:key, 1, type: :string)
+  field(:description, 2, type: :string)
+  field(:generator, 3, type: :string)
+end
+
 defmodule Insterra.Protos.Descriptors.Parameter.Correlation do
   @moduledoc false
 
@@ -85,6 +103,12 @@ defmodule Insterra.Protos.Descriptors.Handler.Service do
     :ListBlocks,
     Insterra.Protos.Descriptors.Block.ListRequest,
     stream(Insterra.Protos.Descriptors.Block)
+  )
+
+  rpc(
+    :ListVariables,
+    Insterra.Protos.Descriptors.Variable.ListRequest,
+    stream(Insterra.Protos.Descriptors.Variable)
   )
 end
 

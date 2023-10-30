@@ -4,6 +4,7 @@ package insterra.protos.descriptors;
 
 service Handler {
   rpc ListBlocks(Block.ListRequest) returns (stream Block) {}
+  rpc ListVariables(Variable.ListRequest) returns (stream Variable) {}
 }
 
 message Block {
@@ -21,6 +22,16 @@ message Block {
   Type type = 2;
   int32 category_id = 3 [json_name="category_id"];
   repeated Parameter parameters = 4;
+}
+
+message Variable {
+  message ListRequest{
+    int32 stack_id = 1;
+  }
+
+  string key = 1;
+  string description = 2;
+  string generator = 3;
 }
 
 message Parameter {
