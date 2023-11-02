@@ -192,7 +192,8 @@ message Stack {
 
   int32 id = 1;
   Type type = 2;
-  string name = 3;
+  int32 parent_id = 3 [json_name = "parent_id"];
+  string name = 4;
   string current_state = 5;
   repeated string possible_events = 6 [json_name = "possible_events"];
   string description = 7;

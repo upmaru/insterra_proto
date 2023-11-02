@@ -262,7 +262,8 @@ defmodule Insterra.Protos.Blueprints.Stack do
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
-  field(:name, 3, type: :string)
+  field(:parent_id, 3, type: :int32)
+  field(:name, 4, type: :string)
   field(:current_state, 5, type: :string, json_name: "currentState")
   field(:possible_events, 6, repeated: true, type: :string)
   field(:description, 7, type: :string)
