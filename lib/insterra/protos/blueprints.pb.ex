@@ -68,6 +68,17 @@ defmodule Insterra.Protos.Blueprints.Archive do
   field(:files, 2, repeated: true, type: Insterra.Protos.Blueprints.Archive.File)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.TransitionRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:id, 3, type: :int32)
+  field(:event, 4, type: Insterra.Protos.Transitions.Event)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.ListRequest do
   @moduledoc false
 
@@ -356,6 +367,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
   rpc(
     :UpdateComponent,
     Insterra.Protos.Blueprints.Component.UpdateRequest,
+    Insterra.Protos.Blueprints.Component.Response
+  )
+
+  rpc(
+    :TransitionComponent,
+    Insterra.Protos.Blueprints.Component.TransitionRequest,
     Insterra.Protos.Blueprints.Component.Response
   )
 

@@ -20,6 +20,7 @@ service Handler {
   rpc ListPresets(Preset.ListRequest) returns (stream Preset) {}
   rpc ListComponents(Component.ListRequest) returns (stream Component) {}
   rpc UpdateComponent(Component.UpdateRequest) returns (Component.Response) {}
+  rpc TransitionComponent(Component.TransitionRequest) returns (Component.Response) {}
   rpc CreateComponentReference(Component.Reference.CreateRequest) returns (Component.Reference.Response) {}
   rpc TransitionComponentReference(Component.Reference.TransitionRequest) returns (Component.Reference.Response) {}
 }
@@ -60,6 +61,13 @@ message Component {
   enum Type {
     dependency = 0;
     inferred = 1;
+  }
+
+  message TransitionRequest {
+    accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
+    accounts.UserReference user_reference = 2 [json_name = "user_reference"];
+    int32 id = 3;
+    transitions.Event event = 4;
   }
 
   message ListRequest {
