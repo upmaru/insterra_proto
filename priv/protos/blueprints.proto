@@ -102,7 +102,7 @@ message Component {
     string provider = 2;
     string type = 3;
     string uid = 4;
-    string current_state = 5;
+    string current_state = 5 [json_name = "current_state"];
     int32 component_id = 6 [json_name = "component_id"];
   }
 

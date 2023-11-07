@@ -20,8 +20,9 @@ message Block {
 
   int32 id = 1;
   Type type = 2;
-  int32 category_id = 3 [json_name="category_id"];
-  repeated Parameter parameters = 4;
+  string module_version = 3 [json_name = "module_version"];
+  int32 category_id = 4 [json_name = "category_id"];
+  repeated Parameter parameters = 5;
 }
 
 message Variable {

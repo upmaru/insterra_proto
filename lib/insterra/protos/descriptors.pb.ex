@@ -36,8 +36,9 @@ defmodule Insterra.Protos.Descriptors.Block do
 
   field(:id, 1, type: :int32)
   field(:type, 2, type: Insterra.Protos.Descriptors.Block.Type, enum: true)
-  field(:category_id, 3, type: :int32)
-  field(:parameters, 4, repeated: true, type: Insterra.Protos.Descriptors.Parameter)
+  field(:module_version, 3, type: :string)
+  field(:category_id, 4, type: :int32)
+  field(:parameters, 5, repeated: true, type: Insterra.Protos.Descriptors.Parameter)
 end
 
 defmodule Insterra.Protos.Descriptors.Variable.ListRequest do
