@@ -134,9 +134,10 @@ message Component {
   Preset preset = 6;
   int32 parent_id = 7 [json_name = "parent_id"];
   string current_state = 8 [json_name = "current_state"];
-  string registration = 9;
-  Reference reference = 10;
-  string updated_at = 11 [json_name = "updated_at"];
+  repeated string possible_events = 9 [json_name = "possible_events"];
+  string registration = 10;
+  Reference reference = 11;
+  string updated_at = 12 [json_name = "updated_at"];
 }
 
 message ComponentParams {

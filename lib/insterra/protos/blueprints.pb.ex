@@ -180,9 +180,10 @@ defmodule Insterra.Protos.Blueprints.Component do
   field(:preset, 6, type: Insterra.Protos.Blueprints.Preset)
   field(:parent_id, 7, type: :int32)
   field(:current_state, 8, type: :string)
-  field(:registration, 9, type: :string)
-  field(:reference, 10, type: Insterra.Protos.Blueprints.Component.Reference)
-  field(:updated_at, 11, type: :string)
+  field(:possible_events, 9, repeated: true, type: :string)
+  field(:registration, 10, type: :string)
+  field(:reference, 11, type: Insterra.Protos.Blueprints.Component.Reference)
+  field(:updated_at, 12, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do
