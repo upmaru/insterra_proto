@@ -227,7 +227,9 @@ defmodule Insterra.Protos.Blueprints.Stack.ListRequest do
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:organization_name, 2, type: :string)
   field(:visibility, 3, type: :string)
-  field(:type, 4, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
+  field(:states, 4, repeated: true, type: :string)
+  field(:provisioned, 5, type: :bool)
+  field(:type, 6, type: Insterra.Protos.Blueprints.Stack.Type, enum: true)
 end
 
 defmodule Insterra.Protos.Blueprints.Stack.CreateRequest do
