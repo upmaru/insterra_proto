@@ -11,12 +11,19 @@ message Category {
     repeated bool configurable = 1;
   }
 
+  message Limit {
+    int32 min = 1;
+    int32 max = 2;
+    string per = 3;
+  }
+
   int32 id = 1;
   string name = 2;
   int32 rank = 3;
   bool configurable = 4;
   string description = 5;
   int32 parent_id = 6 [json_name="parent_id"];
+  repeated Limit limits = 7;
 }
 
 message Tag {

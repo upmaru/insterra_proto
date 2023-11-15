@@ -19,10 +19,17 @@ message UserReference {
 }
 
 message Organization {
+  message Metric {
+    string category_name = 1 [json_name = "category_name"];
+    int32 count = 2;
+  }
+
   message Registration {
     string name = 1;
     string provider = 2;
     string uid = 3;
+
+    repeated Metric metrics = 4;
   }
 
   message Response {
