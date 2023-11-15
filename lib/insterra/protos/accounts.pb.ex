@@ -42,12 +42,16 @@ defmodule Insterra.Protos.Accounts.Organization.Response do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:status, 1, type: Insterra.Protos.Responses.Status)
+  field(:data, 2, type: Insterra.Protos.Accounts.Organization)
 end
 
 defmodule Insterra.Protos.Accounts.Organization do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:id, 1, type: :int32)
+  field(:metrics, 2, repeated: true, type: Insterra.Protos.Accounts.Organization.Metric)
 end
 
 defmodule Insterra.Protos.Accounts.Handler.Service do

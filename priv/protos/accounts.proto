@@ -28,11 +28,14 @@ message Organization {
     string name = 1;
     string provider = 2;
     string uid = 3;
-
     repeated Metric metrics = 4;
   }
 
   message Response {
     responses.Status status = 1;
+    Organization data = 2;
   }
+
+  int32 id = 1;
+  repeated Metric metrics = 2;
 }
