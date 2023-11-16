@@ -1,9 +1,28 @@
+defmodule Insterra.Protos.Taxonomies.Category.Lock.State do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:on, 0)
+  field(:off, 1)
+end
+
 defmodule Insterra.Protos.Taxonomies.Category.ListRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:configurable, 1, repeated: true, type: :bool)
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:configurable, 2, repeated: true, type: :bool)
+end
+
+defmodule Insterra.Protos.Taxonomies.Category.Lock do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:state, 1, type: Insterra.Protos.Taxonomies.Category.Lock.State, enum: true)
+  field(:message, 2, type: :string)
 end
 
 defmodule Insterra.Protos.Taxonomies.Category.Limit do
@@ -28,6 +47,7 @@ defmodule Insterra.Protos.Taxonomies.Category do
   field(:description, 5, type: :string)
   field(:parent_id, 6, type: :int32)
   field(:limits, 7, repeated: true, type: Insterra.Protos.Taxonomies.Category.Limit)
+  field(:lock, 8, type: Insterra.Protos.Taxonomies.Category.Lock)
 end
 
 defmodule Insterra.Protos.Taxonomies.Tag do

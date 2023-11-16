@@ -2,13 +2,26 @@ syntax = "proto3";
 
 package insterra.protos.taxonomies;
 
+import "accounts.proto";
+
 service Handler {
   rpc ListCategories(Category.ListRequest) returns (stream Category) {}
 }
 
 message Category {
   message ListRequest {
-    repeated bool configurable = 1;
+    accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
+    repeated bool configurable = 2;
+  }
+
+  message Lock {
+    enum State {
+      on = 0;
+      off = 1;
+    }
+
+    State state = 1;
+    string message = 2;
   }
 
   message Limit {
@@ -24,6 +37,7 @@ message Category {
   string description = 5;
   int32 parent_id = 6 [json_name="parent_id"];
   repeated Limit limits = 7;
+  Lock lock = 8;
 }
 
 message Tag {
