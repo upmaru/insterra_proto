@@ -39,7 +39,8 @@ message HydratedBlock {
   int32 component_id = 4 [json_name = "component_id"];
   Component.Type component_type = 5 [json_name = "component_type"];
   int32 component_parent_id = 6 [json_name = "component_parent_id"];
-  bytes attributes = 7;
+  repeated int32 parent_referenced_parameter_ids = 7 [json_name = "parent_referenced_parameter_ids"];
+  bytes attributes = 8;
 }
 
 message Archive {

@@ -65,6 +65,7 @@ defmodule Insterra.Protos.Descriptors.Parameter.Correlation do
 
   field(:with_parameter_key, 1, type: :string)
   field(:with_parameter_block_id, 2, type: :int32)
+  field(:with_parameter_id, 3, type: :int32)
 end
 
 defmodule Insterra.Protos.Descriptors.Parameter.Module do

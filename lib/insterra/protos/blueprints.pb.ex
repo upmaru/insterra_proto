@@ -38,7 +38,8 @@ defmodule Insterra.Protos.Blueprints.HydratedBlock do
   field(:component_id, 4, type: :int32)
   field(:component_type, 5, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
   field(:component_parent_id, 6, type: :int32)
-  field(:attributes, 7, type: :bytes)
+  field(:parent_referenced_parameter_ids, 7, repeated: true, type: :int32)
+  field(:attributes, 8, type: :bytes)
 end
 
 defmodule Insterra.Protos.Blueprints.Archive.Response do
