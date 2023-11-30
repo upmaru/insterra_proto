@@ -159,6 +159,8 @@ defmodule Insterra.Protos.Builders.Pack do
   field(:description, 6, type: :string)
   field(:tags, 7, repeated: true, type: Insterra.Protos.Taxonomies.Tag)
   field(:main_dependency, 8, type: Insterra.Protos.Builders.Dependency)
+  field(:image_id, 9, type: :int32)
+  field(:parent_id, 10, type: :int32)
 end
 
 defmodule Insterra.Protos.Builders.Image do
