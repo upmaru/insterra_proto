@@ -113,7 +113,7 @@ defmodule Insterra.Protos.Builders.Pack.ListRequest do
   field(:type, 4, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
-defmodule Insterra.Protos.Builders.Pack.CreateRequest do
+defmodule Insterra.Protos.Builders.Pack.CreateOrUpdateRequest do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -238,8 +238,8 @@ defmodule Insterra.Protos.Builders.Handler.Service do
   )
 
   rpc(
-    :CreateChildPack,
-    Insterra.Protos.Builders.Pack.CreateRequest,
+    :CreateOrUpdateChildPack,
+    Insterra.Protos.Builders.Pack.CreateOrUpdateRequest,
     Insterra.Protos.Builders.Pack.Response
   )
 
