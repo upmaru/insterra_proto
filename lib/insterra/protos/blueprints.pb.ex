@@ -38,8 +38,7 @@ defmodule Insterra.Protos.Blueprints.HydratedBlock do
   field(:component_id, 4, type: :int32)
   field(:component_type, 5, type: Insterra.Protos.Blueprints.Component.Type, enum: true)
   field(:component_parent_id, 6, type: :int32)
-  field(:parent_referenced_parameter_ids, 7, repeated: true, type: :int32)
-  field(:attributes, 8, type: :bytes)
+  field(:attributes, 7, type: :bytes)
 end
 
 defmodule Insterra.Protos.Blueprints.Archive.Response do
@@ -180,11 +179,12 @@ defmodule Insterra.Protos.Blueprints.Component do
   field(:preset_id, 5, type: :int32)
   field(:preset, 6, type: Insterra.Protos.Blueprints.Preset)
   field(:parent_id, 7, type: :int32)
-  field(:current_state, 8, type: :string)
-  field(:possible_events, 9, repeated: true, type: :string)
-  field(:registration, 10, type: :string)
-  field(:reference, 11, type: Insterra.Protos.Blueprints.Component.Reference)
-  field(:updated_at, 12, type: :string)
+  field(:parameter_ids_referenced_by_parent, 8, repeated: true, type: :int32)
+  field(:current_state, 9, type: :string)
+  field(:possible_events, 10, repeated: true, type: :string)
+  field(:registration, 11, type: :string)
+  field(:reference, 12, type: Insterra.Protos.Blueprints.Component.Reference)
+  field(:updated_at, 13, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.ComponentParams do

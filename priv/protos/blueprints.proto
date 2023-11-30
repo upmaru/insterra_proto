@@ -39,8 +39,7 @@ message HydratedBlock {
   int32 component_id = 4 [json_name = "component_id"];
   Component.Type component_type = 5 [json_name = "component_type"];
   int32 component_parent_id = 6 [json_name = "component_parent_id"];
-  repeated int32 parent_referenced_parameter_ids = 7 [json_name = "parent_referenced_parameter_ids"];
-  bytes attributes = 8;
+  bytes attributes = 7;
 }
 
 message Archive {
@@ -134,11 +133,12 @@ message Component {
   int32 preset_id = 5 [json_name = "preset_id"];
   Preset preset = 6;
   int32 parent_id = 7 [json_name = "parent_id"];
-  string current_state = 8 [json_name = "current_state"];
-  repeated string possible_events = 9 [json_name = "possible_events"];
-  string registration = 10;
-  Reference reference = 11;
-  string updated_at = 12 [json_name = "updated_at"];
+  repeated int32 parameter_ids_referenced_by_parent = 8 [json_name = "parameter_ids_referenced_by_parent"];
+  string current_state = 9 [json_name = "current_state"];
+  repeated string possible_events = 10 [json_name = "possible_events"];
+  string registration = 11;
+  Reference reference = 12;
+  string updated_at = 13 [json_name = "updated_at"];
 }
 
 message ComponentParams {
