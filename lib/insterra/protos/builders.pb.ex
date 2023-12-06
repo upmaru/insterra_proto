@@ -111,7 +111,8 @@ defmodule Insterra.Protos.Builders.Pack.ListRequest do
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:organization_name, 2, type: :string)
   field(:visibility, 3, type: :string)
-  field(:type, 4, type: Insterra.Protos.Builders.Pack.Type, enum: true)
+  field(:parent_id, 4, type: :int32)
+  field(:type, 5, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
 defmodule Insterra.Protos.Builders.Pack.CreateOrUpdateRequest do

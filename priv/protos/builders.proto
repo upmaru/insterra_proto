@@ -88,7 +88,8 @@ message Pack {
     accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
     string organization_name = 2 [json_name = "organization_name"];
     string visibility = 3;
-    Type type = 4;
+    int32 parent_id = 4 [json_name = "parent_id"];
+    Type type = 5;
   }
 
   message CreateOrUpdateRequest {
