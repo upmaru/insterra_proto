@@ -121,12 +121,13 @@ defmodule Insterra.Protos.Builders.Pack.CreateOrUpdateRequest do
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
-  field(:instellar_package_id, 2, type: :int32)
-  field(:parent_id, 3, type: :int32)
-  field(:image_id, 4, type: :int32)
-  field(:addon_ids, 5, repeated: true, type: :int32)
-  field(:name, 6, type: :string)
-  field(:type, 7, type: Insterra.Protos.Builders.Pack.Type, enum: true)
+  field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
+  field(:instellar_package_id, 3, type: :int32)
+  field(:parent_id, 4, type: :int32)
+  field(:image_id, 5, type: :int32)
+  field(:addon_ids, 6, repeated: true, type: :int32)
+  field(:name, 7, type: :string)
+  field(:type, 8, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
 defmodule Insterra.Protos.Builders.Pack.Response do
