@@ -97,7 +97,8 @@ message Pack {
     int32 instellar_package_id = 2 [json_name = "instellar_package_id"];
     int32 parent_id = 3 [json_name = "parent_id"];
     int32 image_id = 4 [json_name = "image_id"];
-    string name = 5;
+    repeated int32 addon_ids = 5 [json_name = "addon_ids"];
+    string name = 6;
     Type type = 7;
   }
 

@@ -124,7 +124,8 @@ defmodule Insterra.Protos.Builders.Pack.CreateOrUpdateRequest do
   field(:instellar_package_id, 2, type: :int32)
   field(:parent_id, 3, type: :int32)
   field(:image_id, 4, type: :int32)
-  field(:name, 5, type: :string)
+  field(:addon_ids, 5, repeated: true, type: :int32)
+  field(:name, 6, type: :string)
   field(:type, 7, type: Insterra.Protos.Builders.Pack.Type, enum: true)
 end
 
