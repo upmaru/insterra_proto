@@ -17,7 +17,8 @@ defmodule Insterra.Protos.Builders.Pack.Type do
   use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
   field(:template, 0)
-  field(:builder, 1)
+  field(:extension, 1)
+  field(:builder, 2)
 end
 
 defmodule Insterra.Protos.Builders.Dependency do

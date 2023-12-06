@@ -65,7 +65,8 @@ message Preview {
 message Pack {
   enum Type {
     template = 0;
-    builder = 1;
+    extension = 1;
+    builder = 2;
   }
 
   message TransitionRequest {
