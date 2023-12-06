@@ -164,6 +164,7 @@ defmodule Insterra.Protos.Builders.Pack do
   field(:main_dependency, 8, type: Insterra.Protos.Builders.Dependency)
   field(:image_id, 9, type: :int32)
   field(:parent_id, 10, type: :int32)
+  field(:addon_ids, 11, repeated: true, type: :int32)
 end
 
 defmodule Insterra.Protos.Builders.Image do

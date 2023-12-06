@@ -124,6 +124,7 @@ message Pack {
   Dependency main_dependency = 8 [json_name = "main_dependency"];
   int32 image_id = 9 [json_name = "image_id"];
   int32 parent_id = 10 [json_name = "parent_id"];
+  repeated int32 addon_ids = 11 [json_name = "addon_ids"];
 }
 
 message Image {
