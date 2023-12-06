@@ -23,7 +23,7 @@ defmodule InsterraBridge.MixProject do
     [
       {:ecto, "~> 3.10"},
       {:jason, "~> 1.2"},
-      {:grpc, "~> 0.6"},
+      {:grpc, "~> 0.7"},
       {:protobuf, "~> 0.12.0"},
       {:google_protos, "~> 0.3"}
       # {:dep_from_hexpm, "~> 0.3.0"},
