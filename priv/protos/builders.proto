@@ -127,6 +127,7 @@ message Pack {
   int32 parent_id = 10 [json_name = "parent_id"];
   repeated int32 addon_ids = 11 [json_name = "addon_ids"];
   repeated int32 require_extension_ids = 12 [json_name = "require_extension_ids"];
+  repeated string require_services = 13 [json_name = "require_services"];
 }
 
 message Image {
