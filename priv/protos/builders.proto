@@ -128,6 +128,7 @@ message Pack {
   repeated int32 addon_ids = 11 [json_name = "addon_ids"];
   repeated int32 required_extension_ids = 12 [json_name = "required_extension_ids"];
   repeated string required_services = 13 [json_name = "required_services"];
+  repeated string require_one_of_services = 14 [json_name = "require_one_of_services"];
 }
 
 message Image {

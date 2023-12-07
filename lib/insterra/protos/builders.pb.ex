@@ -168,6 +168,7 @@ defmodule Insterra.Protos.Builders.Pack do
   field(:addon_ids, 11, repeated: true, type: :int32)
   field(:required_extension_ids, 12, repeated: true, type: :int32)
   field(:required_services, 13, repeated: true, type: :string)
+  field(:require_one_of_services, 14, repeated: true, type: :string)
 end
 
 defmodule Insterra.Protos.Builders.Image do
