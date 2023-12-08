@@ -73,6 +73,8 @@ message Component {
   message ListRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
     int32 stack_id = 2 [json_name = "stack_id"];
+    string reference_type = 3 [json_name = "reference_type"];
+    repeated string reference_uids = 4 [json_name = "reference_uids"];
   }
 
   message UpdateRequest{

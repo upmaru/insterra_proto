@@ -86,6 +86,8 @@ defmodule Insterra.Protos.Blueprints.Component.ListRequest do
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:stack_id, 2, type: :int32)
+  field(:reference_type, 3, type: :string)
+  field(:reference_uids, 4, repeated: true, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
