@@ -21,6 +21,15 @@ defmodule Insterra.Protos.Builders.Pack.Type do
   field(:builder, 2)
 end
 
+defmodule Insterra.Protos.Builders.Pack.Requirement.Type do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:must, 0)
+  field(:one_of, 1)
+end
+
 defmodule Insterra.Protos.Builders.Dependency do
   @moduledoc false
 
@@ -78,6 +87,16 @@ defmodule Insterra.Protos.Builders.Preview do
   field(:pack_id, 1, type: :int32)
   field(:blocks, 2, repeated: true, type: Insterra.Protos.Builders.Preview.Block)
   field(:files, 3, repeated: true, type: Insterra.Protos.Builders.Preview.File)
+end
+
+defmodule Insterra.Protos.Builders.Pack.Requirement do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:by_pack_id, 1, type: :int32, json_name: "byPackId")
+  field(:condition, 2, type: Insterra.Protos.Builders.Pack.Requirement.Type, enum: true)
+  field(:services, 3, repeated: true, type: :string)
 end
 
 defmodule Insterra.Protos.Builders.Pack.TransitionRequest do
@@ -167,8 +186,7 @@ defmodule Insterra.Protos.Builders.Pack do
   field(:parent_id, 10, type: :int32)
   field(:addon_ids, 11, repeated: true, type: :int32)
   field(:required_extension_ids, 12, repeated: true, type: :int32)
-  field(:required_services, 13, repeated: true, type: :string)
-  field(:require_one_of_services, 14, repeated: true, type: :string)
+  field(:requirements, 13, repeated: true, type: Insterra.Protos.Builders.Pack.Requirement)
 end
 
 defmodule Insterra.Protos.Builders.Image do

@@ -69,6 +69,17 @@ message Pack {
     builder = 2;
   }
 
+  message Requirement {
+    enum Type {
+      must = 0;
+      one_of = 1;
+    }
+
+    int32 by_pack_id = 1;
+    Type condition = 2;
+    repeated string services = 3;
+  }
+
   message TransitionRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
     accounts.UserReference user_reference = 2 [json_name = "user_reference"];
@@ -127,8 +138,7 @@ message Pack {
   int32 parent_id = 10 [json_name = "parent_id"];
   repeated int32 addon_ids = 11 [json_name = "addon_ids"];
   repeated int32 required_extension_ids = 12 [json_name = "required_extension_ids"];
-  repeated string required_services = 13 [json_name = "required_services"];
-  repeated string require_one_of_services = 14 [json_name = "require_one_of_services"];
+  repeated Requirement requirements = 13 [json_name = "requirements"];
 }
 
 message Image {
