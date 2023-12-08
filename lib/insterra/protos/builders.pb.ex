@@ -21,6 +21,15 @@ defmodule Insterra.Protos.Builders.Pack.Type do
   field(:builder, 2)
 end
 
+defmodule Insterra.Protos.Builders.Pack.Requirement.Type do
+  @moduledoc false
+
+  use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:must, 0)
+  field(:one_of, 1)
+end
+
 defmodule Insterra.Protos.Builders.Dependency do
   @moduledoc false
 
@@ -85,9 +94,12 @@ defmodule Insterra.Protos.Builders.Pack.Requirement do
 
   use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
 
-  field(:by_pack_id, 1, type: :int32, json_name: "byPackId")
-  field(:required_services, 2, repeated: true, type: :string)
-  field(:require_one_of_services, 3, repeated: true, type: :string)
+  field(:pack_id, 1, type: :int32, json_name: "packId")
+
+  field(:pack_type, 2, type: Insterra.Protos.Builders.Pack.Type, json_name: "packType", enum: true)
+
+  field(:type, 3, type: Insterra.Protos.Builders.Pack.Requirement.Type, enum: true)
+  field(:service, 4, type: :string)
 end
 
 defmodule Insterra.Protos.Builders.Pack.TransitionRequest do

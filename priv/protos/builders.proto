@@ -70,9 +70,15 @@ message Pack {
   }
 
   message Requirement {
-    int32 by_pack_id = 1;
-    repeated string required_services = 2 [json_name = "required_services"];
-    repeated string require_one_of_services = 3 [json_name = "require_one_of_services"];
+    enum Type {
+      must = 0;
+      one_of = 1;
+    }
+
+    int32 pack_id = 1;
+    Pack.Type pack_type = 2;
+    Pack.Requirement.Type type = 3;
+    string service = 4;
   }
 
   message TransitionRequest {
