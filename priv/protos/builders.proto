@@ -70,14 +70,14 @@ message Pack {
   }
 
   message Requirement {
-    enum Type {
+    enum Condition {
       must = 0;
       one_of = 1;
     }
 
     int32 pack_id = 1;
     Pack.Type pack_type = 2;
-    Pack.Requirement.Type type = 3;
+    Condition condition = 3;
     string service = 4;
   }
 

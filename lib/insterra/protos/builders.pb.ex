@@ -21,7 +21,7 @@ defmodule Insterra.Protos.Builders.Pack.Type do
   field(:builder, 2)
 end
 
-defmodule Insterra.Protos.Builders.Pack.Requirement.Type do
+defmodule Insterra.Protos.Builders.Pack.Requirement.Condition do
   @moduledoc false
 
   use Protobuf, enum: true, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
@@ -98,7 +98,7 @@ defmodule Insterra.Protos.Builders.Pack.Requirement do
 
   field(:pack_type, 2, type: Insterra.Protos.Builders.Pack.Type, json_name: "packType", enum: true)
 
-  field(:type, 3, type: Insterra.Protos.Builders.Pack.Requirement.Type, enum: true)
+  field(:condition, 3, type: Insterra.Protos.Builders.Pack.Requirement.Condition, enum: true)
   field(:service, 4, type: :string)
 end
 
