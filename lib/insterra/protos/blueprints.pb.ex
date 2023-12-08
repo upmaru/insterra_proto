@@ -95,11 +95,7 @@ defmodule Insterra.Protos.Blueprints.Component.ListRequest do
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:stack_id, 2, type: :int32)
-
-  field(:refernece, 3,
-    type: Insterra.Protos.Blueprints.Component.ReferenceParams,
-    json_name: "reference"
-  )
+  field(:reference, 3, type: Insterra.Protos.Blueprints.Component.ReferenceParams)
 end
 
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
