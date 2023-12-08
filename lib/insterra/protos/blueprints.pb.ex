@@ -68,6 +68,15 @@ defmodule Insterra.Protos.Blueprints.Archive do
   field(:files, 2, repeated: true, type: Insterra.Protos.Blueprints.Archive.File)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.ReferenceParams do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:type, 1, type: :string)
+  field(:uids, 2, repeated: true, type: :string)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.TransitionRequest do
   @moduledoc false
 
@@ -86,8 +95,11 @@ defmodule Insterra.Protos.Blueprints.Component.ListRequest do
 
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:stack_id, 2, type: :int32)
-  field(:reference_type, 3, type: :string)
-  field(:reference_uids, 4, repeated: true, type: :string)
+
+  field(:refernece, 3,
+    type: Insterra.Protos.Blueprints.Component.ReferenceParams,
+    json_name: "reference"
+  )
 end
 
 defmodule Insterra.Protos.Blueprints.Component.UpdateRequest do
