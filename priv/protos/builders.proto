@@ -102,6 +102,7 @@ message Pack {
     string visibility = 3;
     int32 parent_id = 4 [json_name = "parent_id"];
     Type type = 5;
+    repeated int32 ids = 6;
   }
 
   message CreateOrUpdateRequest {

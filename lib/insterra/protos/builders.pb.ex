@@ -135,6 +135,7 @@ defmodule Insterra.Protos.Builders.Pack.ListRequest do
   field(:visibility, 3, type: :string)
   field(:parent_id, 4, type: :int32)
   field(:type, 5, type: Insterra.Protos.Builders.Pack.Type, enum: true)
+  field(:ids, 6, repeated: true, type: :int32)
 end
 
 defmodule Insterra.Protos.Builders.Pack.CreateOrUpdateRequest do
