@@ -88,6 +88,15 @@ defmodule Insterra.Protos.Blueprints.Component.TransitionRequest do
   field(:event, 4, type: Insterra.Protos.Transitions.Event)
 end
 
+defmodule Insterra.Protos.Blueprints.Component.GetRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.12.0", syntax: :proto3
+
+  field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
+  field(:reference, 2, type: Insterra.Protos.Blueprints.Component.ReferenceParams)
+end
+
 defmodule Insterra.Protos.Blueprints.Component.ListRequest do
   @moduledoc false
 
@@ -376,6 +385,12 @@ defmodule Insterra.Protos.Blueprints.Handler.Service do
     :ListComponents,
     Insterra.Protos.Blueprints.Component.ListRequest,
     stream(Insterra.Protos.Blueprints.Component)
+  )
+
+  rpc(
+    :GetComponent,
+    Insterra.Protos.Blueprints.Component.GetRequest,
+    Insterra.Protos.Blueprints.Component.Response
   )
 
   rpc(
