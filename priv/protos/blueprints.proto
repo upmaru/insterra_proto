@@ -67,6 +67,7 @@ message Component {
   message ReferenceParams {
     string type = 1;
     repeated string uids = 2;
+    string provider = 3;
   }
 
   message TransitionRequest {
@@ -84,7 +85,7 @@ message Component {
   message ListRequest {
     accounts.OrganizationReference organization_reference = 1 [json_name = "organization_reference"];
     int32 stack_id = 2 [json_name = "stack_id"];
-    ReferenceParams reference = 3 [json_name = "reference"];
+    ReferenceParams reference = 3;
   }
 
   message UpdateRequest{

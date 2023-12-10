@@ -75,6 +75,7 @@ defmodule Insterra.Protos.Blueprints.Component.ReferenceParams do
 
   field(:type, 1, type: :string)
   field(:uids, 2, repeated: true, type: :string)
+  field(:provider, 3, type: :string)
 end
 
 defmodule Insterra.Protos.Blueprints.Component.TransitionRequest do
