@@ -5,4 +5,5 @@ defmodule Insterra.Protos.Transitions.Event do
 
   field(:name, 1, type: :string)
   field(:comment, 2, type: :string)
+  field(:parameters, 3, type: :bytes)
 end
