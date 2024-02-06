@@ -28,9 +28,10 @@ message Repository {
     accounts.OrganizationReference organization_reference = 1 [json_name="organization_reference"];
     accounts.UserReference user_reference = 2 [json_name="user_reference"];
     int32 instellar_github_installation_id = 3 [json_name="instellar_github_installation_id"];
-    int32 stack_id = 4 [json_name="stack_id"];
-    string name = 5;
-    credentials.Token encrypted_token = 6;
+    string instellar_github_installation_type = 4 [json_name="instellar_github_installation_type"];
+    int32 stack_id = 5 [json_name="stack_id"];
+    string name = 6;
+    credentials.Token encrypted_token = 7;
   }
 
   message TransitionRequest {

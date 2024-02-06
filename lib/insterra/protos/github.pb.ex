@@ -23,9 +23,10 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:organization_reference, 1, type: Insterra.Protos.Accounts.OrganizationReference)
   field(:user_reference, 2, type: Insterra.Protos.Accounts.UserReference)
   field(:instellar_github_installation_id, 3, type: :int32)
-  field(:stack_id, 4, type: :int32)
-  field(:name, 5, type: :string)
-  field(:encrypted_token, 6, type: Insterra.Protos.Credentials.Token, json_name: "encryptedToken")
+  field(:instellar_github_installation_type, 4, type: :string)
+  field(:stack_id, 5, type: :int32)
+  field(:name, 6, type: :string)
+  field(:encrypted_token, 7, type: Insterra.Protos.Credentials.Token, json_name: "encryptedToken")
 end
 
 defmodule Insterra.Protos.Github.Repository.TransitionRequest do
