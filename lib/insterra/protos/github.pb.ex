@@ -27,6 +27,11 @@ defmodule Insterra.Protos.Github.Repository.CreateRequest do
   field(:stack_id, 5, type: :int32)
   field(:name, 6, type: :string)
   field(:encrypted_token, 7, type: Insterra.Protos.Credentials.Token, json_name: "encryptedToken")
+
+  field(:personal_encrypted_token, 8,
+    type: Insterra.Protos.Credentials.Token,
+    json_name: "personalEncryptedToken"
+  )
 end
 
 defmodule Insterra.Protos.Github.Repository.TransitionRequest do

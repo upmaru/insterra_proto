@@ -32,6 +32,7 @@ message Repository {
     int32 stack_id = 5 [json_name="stack_id"];
     string name = 6;
     credentials.Token encrypted_token = 7;
+    credentials.Token personal_encrypted_token = 8;
   }
 
   message TransitionRequest {
